@@ -43,6 +43,9 @@
     <h2 class="text-2xl font-bold mb-2">Explore Destinations</h2>
     <p>View destinations with integrated Google Maps, images, and guides.</p>
     <div id="map" class="h-64 w-full border mt-4"></div>
+    <div id="weather" class="mt-4 text-sm text-gray-600"></div>
+    <div id="air-quality" class="mt-2 text-sm text-gray-600"></div>
+    <iframe id="aerial-view" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen class="mt-4"></iframe>
   </section>
 
   <section id="cultural" class="p-8">
@@ -105,7 +108,9 @@
     <p>&copy; 2025 Smart Tourism & Cultural Tech. All rights reserved.</p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="map.js"></script>
   <script src="script.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
