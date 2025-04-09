@@ -15,8 +15,69 @@ body {
   h2 {
     color: #1d4ed8; /* Tailwind blue-700 */
   }
+  .nav-link {
+    @apply px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:bg-gray-800 transition;
+  }
+  .mobile-link {
+    @apply text-gray-200 hover:text-emerald-400 font-medium px-3 py-1 rounded-md;
+  }
   
-  a:hover {
-    text-decoration: underline;
+
+
+  /* Tech-enhanced animations */
+  .feature-card:hover .icon-container {
+    transform: rotateY(180deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .tech-theme-active {
+    --primary-color: #00f0ff;
+    --secondary-color: #ff00f0;
+  }
+  
+  .tech-theme-active footer {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-top: 1px solid rgba(var(--primary-color), 0.2);
+  }
+  
+  .tech-theme-active .feature-card {
+    border: 1px solid rgba(var(--primary-color), 0.3);
+    box-shadow: 0 0 15px rgba(var(--primary-color), 0.1);
+  }
+  
+  .tech-theme-active .feature-card:hover {
+    box-shadow: 0 0 25px rgba(var(--primary-color), 0.3);
+    border-color: var(--primary-color);
+  }
+  
+  .tech-theme-active .icon-container {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  }
+
+
+  .analytics-section {
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .analytics-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  #analyticsDashboard p {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  #analyticsDashboard span {
+    font-weight: bold;
+    color: #007bff;
   }
   
