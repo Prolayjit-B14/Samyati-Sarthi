@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D India Explorer</title>
+    <link rel="stylesheet" href="earth.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="loading" class="loading">Loading India Explorer...</div>
+
+
+    <div id="info">
+        <h1>India 3D Explorer</h1>
+        
+        <div class="controls">
+            <label for="state">Select State:</label>
+            <select id="state">
+                <option value="">-- Select State --</option>
+                <option value="goa">Goa</option>
+                <option value="kerala">Kerala</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="delhi">Delhi</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="tamilnadu">Tamil Nadu</option>
+                <option value="karnataka">Karnataka</option>
+            </select>
+            
+            <label for="landmark">Select Landmark:</label>
+            <select id="landmark" disabled>
+                <option value="">-- Select Landmark --</option>
+            </select>
+            
+            <label for="search">Search Location:</label>
+            <input type="text" id="search" placeholder="Type location name...">
+            
+            <button id="search-btn">Explore</button>
+            <button id="reset-btn">Reset View</button>
+            
+            <div class="image-preview" id="preview"></div>
+        </div>
+    </div>
+    
+    <div id="location-info">
+        <div class="location-title" id="info-title">Location Information</div>
+        <div id="info-description"></div>
+        <p><strong>Location:</strong> <span id="info-location"></span></p>
+        <p><strong>Best Time to Visit:</strong> <span id="info-best-time"></span></p>
+        <div class="state-info">
+            <p><strong>State:</strong> <span id="info-state"></span></p>
+            <p id="info-history"></p>
+        </div>
+    </div>
+    
+    <div id="tooltip" class="tooltip"></div>
+
+
+<!-- Navbar inject -->
+<div id="navbar-container"></div>
+
+<!-- Footer inject -->
+<div id="footer-container"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="earth.js"></script>
+    <script src="../Footer/footer.js"></script>
+    <script src="../Navbar/navbar.js"></script>
+    
+</body>
+</html>
