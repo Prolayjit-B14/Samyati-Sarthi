@@ -96,4 +96,3 @@ document.addEventListener("DOMContentLoaded", () => {
   loadAPIFeatures();
   loadGoogleMaps(); // Load map JS after DOM is ready
 });
-
