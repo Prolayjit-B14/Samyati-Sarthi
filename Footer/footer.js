@@ -1,12 +1,15 @@
 // Inside components/footer.js
 document.addEventListener("DOMContentLoaded", function () {
-  let path = "";
+  const nestedDirs = ["Site Data", "3D Earth Model", "Virtual Destination", "Blog", "Forum"];
+  const currentPath = decodeURIComponent(window.location.pathname); // Convert %20 to space
+  let path = "Footer/footer.html";
 
-  // Adjust path dynamically
-  if (window.location.pathname.includes("Site%20Data") || window.location.pathname.includes("Site Data")) {
-    path = "../Footer/footer.html";
-  } else {
-    path = "Footer/footer.html";
+  // If current path includes any of the nested directory names, adjust the path
+  for (let dir of nestedDirs) {
+    if (currentPath.includes(dir)) {
+      path = "../Footer/footer.html";
+      break;
+    }
   }
 
   fetch(path)

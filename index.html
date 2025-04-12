@@ -4,105 +4,341 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Tourism & Cultural Tech</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="Footer/footer.css">
+
+  <!-- Tailwind CSS (only once) -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome (use latest single version) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="Footer/footer.css" />
+  <link rel="stylesheet" href="Navbar/navbar.css" />
 </head>
 <body class="bg-gray-900 text-gray-800">
 
 
 
 
-  <!-- Main Sections -->
-  <section id="home" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Overview</h2>
-    <p>Discover a smarter way to travel with AI-powered recommendations and immersive AR/VR experiences.</p>
-  </section>
+  <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8">
+    <div class="container mx-auto">
+      <h1 class="text-4xl font-bold mb-4">Smart Tourism & Cultural Technology</h1>
+      <p class="text-xl">Experience travel reimagined through AI, AR/VR, and data-driven recommendations</p>
+    </div>
+  </header>
 
-  <section id="explore" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Explore Destinations</h2>
-    <p>View destinations with integrated Google Maps, images, and guides.</p>
-    <div id="map" class="h-64 w-full border mt-4"></div>
-    <div id="weather" class="mt-4 text-sm text-gray-600"></div>
-    <div id="air-quality" class="mt-2 text-sm text-gray-600"></div>
-    <iframe id="aerial-view" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen class="mt-4"></iframe>
+  <!-- Featured Carousel -->
+  <section class="bg-white py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Featured Destinations</h2>
+      <div class="flex overflow-x-auto gap-6 pb-4">
+        <div class="flex-shrink-0 w-80 rounded-lg overflow-hidden shadow-lg">
+          <img src="/api/placeholder/400/300" alt="Paris" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-xl mb-2">Paris</h3>
+            <p class="text-gray-700">Experience the City of Lights with our AR-guided tours</p>
+            <div class="mt-4 flex items-center">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">AI Recommended</span>
+              <span class="ml-2 text-sm text-gray-500">28°C</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 w-80 rounded-lg overflow-hidden shadow-lg">
+          <img src="/api/placeholder/400/300" alt="Kyoto" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-xl mb-2">Kyoto</h3>
+            <p class="text-gray-700">Traditional meets innovation in Japan's cultural heart</p>
+            <div class="mt-4 flex items-center">
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Cultural Highlight</span>
+              <span class="ml-2 text-sm text-gray-500">22°C</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 w-80 rounded-lg overflow-hidden shadow-lg">
+          <img src="/api/placeholder/400/300" alt="Marrakech" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-xl mb-2">Marrakech</h3>
+            <p class="text-gray-700">Navigate ancient medinas with smart real-time translation</p>
+            <div class="mt-4 flex items-center">
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Trending</span>
+              <span class="ml-2 text-sm text-gray-500">33°C</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+<!-- Main Features Grid -->
+<section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Discover Smart Travel Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Existing Cards... -->
 
-  <section id="cultural" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Cultural & Historical Sites</h2>
-    <p>Explore local traditions, heritage, and iconic landmarks.</p>
-  </section>
+        <!-- Explore Destinations -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-blue-500 text-3xl mb-4"><i class="fas fa-map-marked-alt"></i></div>
+            <h3 class="text-xl font-bold mb-2">Explore Destinations</h3>
+            <p class="text-gray-600 mb-4">Interactive maps, real-time weather, and air quality monitoring for informed travel decisions.</p>
+            <a href="explore.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
 
-<!-- Earth 3D View Section -->
-<section id="earth" class="p-8">
-  <h2 class="text-2xl font-bold mb-2">🌍 Earth 3D View</h2>
-  <p class="mb-4">View the world in a new way.</p>
-  <a href="earth-3d.html" class="text-blue-600 underline hover:text-blue-800">Go to 3D</a>
+        <!-- Cultural & Historical Sites -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-indigo-500 text-3xl mb-4"><i class="fas fa-landmark"></i></div>
+            <h3 class="text-xl font-bold mb-2">Cultural & Historical Sites</h3>
+            <p class="text-gray-600 mb-4">Discover local traditions, heritage sites, and iconic landmarks with rich historical context.</p>
+            <a href="cultural.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- Earth 3D View -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-green-500 text-3xl mb-4"><i class="fas fa-globe-americas"></i></div>
+            <h3 class="text-xl font-bold mb-2">Earth 3D View</h3>
+            <p class="text-gray-600 mb-4">Explore destinations in stunning 3D with interactive points of interest and information.</p>
+            <a href="earth-3d.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- Analytics Dashboard -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-purple-500 text-3xl mb-4"><i class="fas fa-chart-line"></i></div>
+            <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+            <p class="text-gray-600 mb-4">Track tourism trends, crowd levels, and peak seasons with data visualization tools.</p>
+            <a href="dashboard.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- Events & Festivals -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-pink-500 text-3xl mb-4"><i class="fas fa-calendar-alt"></i></div>
+            <h3 class="text-xl font-bold mb-2">Events & Festivals</h3>
+            <p class="text-gray-600 mb-4">Stay updated on cultural festivals and travel-worthy events happening worldwide.</p>
+            <a href="events.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- AI Travel Assistant -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-orange-500 text-3xl mb-4"><i class="fas fa-robot"></i></div>
+            <h3 class="text-xl font-bold mb-2">AI Travel Assistant</h3>
+            <p class="text-gray-600 mb-4">Get personalized recommendations and 24/7 support from our intelligent chatbot.</p>
+            <a href="assistant.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- Tour Guide -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-yellow-500 text-3xl mb-4"><i class="fas fa-user-ninja"></i></div>
+            <h3 class="text-xl font-bold mb-2">Smart Tour Guide</h3>
+            <p class="text-gray-600 mb-4">Virtual or on-ground guides offering curated routes, voice narration, and local insights.</p>
+            <a href="tour-guide.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- Smart Booking System -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-red-500 text-3xl mb-4"><i class="fas fa-concierge-bell"></i></div>
+            <h3 class="text-xl font-bold mb-2">Smart Booking System</h3>
+            <p class="text-gray-600 mb-4">Book flights, hotels, activities, and rentals with AI-based price tracking and deal alerts.</p>
+            <a href="booking.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+
+        <!-- Photo & Video Gallery -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="text-teal-500 text-3xl mb-4"><i class="fas fa-photo-video"></i></div>
+            <h3 class="text-xl font-bold mb-2">Photo & Video Gallery</h3>
+            <p class="text-gray-600 mb-4">Browse stunning visuals of destinations, user-submitted travel vlogs, and memories.</p>
+            <a href="gallery.html" class="text-blue-600 hover:underline">Learn more →</a>
+        </div>
+        <!-- View All Features Button -->
+        <div class="text-center mt-10">
+            <a href="#all-features" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            View All Features
+            </a>
+        </div>
+    </div>
+    </div>
 </section>
+ 
 
-<!-- Analytics Dashboard Section -->
-<section id="analytics" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Analytics Dashboard</h2>
-    <p class="mb-4">Stay updated with stats.</p>
-    <a href="dashboard.html" class="text-blue-600 underline hover:text-blue-800">View the Analytics</a>
+  <!-- Technology Showcase -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Technology That Powers Smart Tourism</h2>
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="w-full md:w-1/2">
+          <img src="/api/placeholder/600/400" alt="AR Technology Demo" class="rounded-lg shadow-lg">
+        </div>
+        
+        <div class="w-full md:w-1/2 space-y-6">
+          <div class="flex items-start">
+            <div class="bg-blue-100 p-3 rounded-full mr-4">
+              <i class="fas fa-vr-cardboard text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">Virtual Reality Tours</h3>
+              <p class="text-gray-600">Experience destinations before you go with immersive VR previews</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-green-100 p-3 rounded-full mr-4">
+              <i class="fas fa-brain text-green-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">AI-Powered Recommendations</h3>
+              <p class="text-gray-600">Get personalized suggestions based on your preferences and travel history</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-purple-100 p-3 rounded-full mr-4">
+              <i class="fas fa-camera-retro text-purple-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">Augmented Reality Guides</h3>
+              <p class="text-gray-600">Point your camera at landmarks to see historical information and tour guides</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-red-100 p-3 rounded-full mr-4">
+              <i class="fas fa-language text-red-600"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">Real-time Translation</h3>
+              <p class="text-gray-600">Break language barriers with instant translation of signs, menus, and conversations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-
-
-
-  <section id="events" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Upcoming Events & Festivals</h2>
-    <p>Stay updated on cultural festivals and travel-worthy events.</p>
+  <!-- User Experience Testimonials -->
+  <section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">What Travelers Say</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center mb-4">
+            <img src="/api/placeholder/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+            <div class="ml-4">
+              <h4 class="font-bold">Sarah J.</h4>
+              <div class="text-yellow-500">★★★★★</div>
+            </div>
+          </div>
+          <p class="text-gray-600">"The AR landmark recognition made exploring Rome so much more informative. I learned details I would have missed completely!"</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center mb-4">
+            <img src="/api/placeholder/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+            <div class="ml-4">
+              <h4 class="font-bold">David M.</h4>
+              <div class="text-yellow-500">★★★★★</div>
+            </div>
+          </div>
+          <p class="text-gray-600">"The AI recommendations were spot on! It suggested a small cafe in Paris that became the highlight of our trip."</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center mb-4">
+            <img src="/api/placeholder/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+            <div class="ml-4">
+              <h4 class="font-bold">Elena K.</h4>
+              <div class="text-yellow-500">★★★★★</div>
+            </div>
+          </div>
+          <p class="text-gray-600">"The virtual tours helped us plan our itinerary perfectly. We knew exactly which attractions to prioritize."</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="personalized" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Personalized Travel Experiences</h2>
-    <p>Get AI-based suggestions tailored to your preferences and travel history.</p>
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Travel Experience?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of travelers using smart technology to discover, plan, and experience destinations like never before.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#signup" class="bg-white text-blue-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition-colors">
+          Get Started - It's Free
+        </a>
+        <a href="#demo" class="border-2 border-white text-white hover:bg-white hover:text-blue-700 font-bold py-3 px-6 rounded-lg transition-colors">
+          Watch Demo
+        </a>
+      </div>
+    </div>
   </section>
 
-  <section id="booking" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Smart Booking System</h2>
-    <p>Book hotels, guides, and transport easily with smart suggestions.</p>
+  <!-- All Features Section -->
+  <section id="all-features" class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">All Smart Tourism Features</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="explore.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Explore Destinations</h3>
+          <p class="text-sm text-gray-600">Interactive maps & real-time data</p>
+        </a>
+        
+        <a href="cultural.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Cultural & Historical Sites</h3>
+          <p class="text-sm text-gray-600">Heritage and landmark guides</p>
+        </a>
+        
+        <a href="earth-3d.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Earth 3D View</h3>
+          <p class="text-sm text-gray-600">Interactive global exploration</p>
+        </a>
+        
+        <a href="dashboard.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Analytics Dashboard</h3>
+          <p class="text-sm text-gray-600">Tourism trends and insights</p>
+        </a>
+        
+        <a href="events.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Events & Festivals</h3>
+          <p class="text-sm text-gray-600">Cultural events calendar</p>
+        </a>
+        
+        <a href="personalized.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Personalized Experiences</h3>
+          <p class="text-sm text-gray-600">Custom travel recommendations</p>
+        </a>
+        
+        <a href="booking.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Smart Booking System</h3>
+          <p class="text-sm text-gray-600">AI-optimized reservations</p>
+        </a>
+        
+        <a href="stories.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Travel Stories & Blogs</h3>
+          <p class="text-sm text-gray-600">Community experiences</p>
+        </a>
+        
+        <a href="assistant.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">AI Travel Assistant</h3>
+          <p class="text-sm text-gray-600">24/7 smart travel companion</p>
+        </a>
+        
+        <a href="virtual.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Virtual Tours</h3>
+          <p class="text-sm text-gray-600">Immersive 3D experiences</p>
+        </a>
+        
+        <a href="media.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Photos & Videos</h3>
+          <p class="text-sm text-gray-600">User-generated content</p>
+        </a>
+        
+        <a href="forum.html" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors">
+          <h3 class="font-bold">Travel Forum</h3>
+          <p class="text-sm text-gray-600">Connect with fellow travelers</p>
+        </a>
+      </div>
+    </div>
   </section>
-
-  <section id="stories" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Travel Stories & Blogs</h2>
-    <p>Share and read travel experiences from users around the world.</p>
-  </section>
-
-  <section id="assistant" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">AI Travel Assistant</h2>
-    <p>Chat with our AI assistant for travel tips and personalized plans.</p>
-  </section>
-
-  <section id="virtual" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Virtual Tours</h2>
-    <p>Enjoy immersive 3D and AR/VR experiences of destinations.</p>
-  </section>
-
-  <section id="media" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Photos & Videos from Travelers</h2>
-    <p>Explore visuals contributed by our travel community.</p>
-  </section>
-
-  <section id="forum" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Travel Forum & Discussion Board</h2>
-    <p>Discuss itineraries, get tips, and connect with fellow travelers.</p>
-  </section>
-
-  <section id="about" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">About Us</h2>
-    <p>Learn about our vision and the team behind the project.</p>
-  </section>
-
-  <section id="contact" class="p-8">
-    <h2 class="text-2xl font-bold mb-2">Contact & Support</h2>
-    <p>Get in touch for support or inquiries.</p>
-  </section>
-
-
-
 
 <!-- Inject navbar here -->
 <div id="navbar-container"></div>
@@ -117,6 +353,13 @@
 <script src="script.js"></script>
 <script src="Navbar/navbar.js"></script>
 <script src="Footer/footer.js"></script>
+  <script>
+    // Simple JavaScript to demonstrate functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simulated weather data
+      document.getElementById('weather').textContent = "Current Weather: Sunny, 25°C";
+      document.getElementById('air-quality').textContent = "Air Quality: Good (AQI: 32)";
+    });
+  </script>
 </body>
 </html>
-

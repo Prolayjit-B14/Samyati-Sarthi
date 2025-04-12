@@ -1,0 +1,55 @@
+ /* Ensure that the mobile menu is aligned properly */
+#mobile-menu {
+    position: fixed;
+    top: 64px; /* Adjust this based on the height of the navbar */
+    right: 0;
+    height: 400px; 
+    background-color: rgba(0, 0, 0, 0.902); /* Semi-transparent dark background */
+    z-index: 30; /* Ensure it stays above other content */
+    padding-top: 20px;
+}
+
+  /* For small devices (mobile), show hamburger icon and mobile menu */
+  @media (max-width: 640px) {
+    #mobile-menu {
+      width: 250px; /* Mobile menu width */
+    }
+}
+
+  /* For medium screens (tablets) */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    #mobile-menu {
+      width: 300px; /* Tablet width */
+    }
+}
+
+  /* For large screens (desktops), hide the mobile menu */
+  @media (min-width: 1024px) {
+    #mobile-menu {
+      display: none;
+    }
+}
+
+  /* Adjust the hamburger icon button for smaller devices */
+#nav-toggle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+  /* Enhance mobile navigation button appearance */
+#nav-toggle:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+  /* Add a smooth transition effect for opening the mobile menu */
+  #mobile-menu.open {
+    transform: translateX(0); /* Slide the mobile menu in */
+  }
+
+  #mobile-menu.closed {
+    transform: translateX(-100%); /* Slide the mobile menu out */
+  }
