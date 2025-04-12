@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Tourism Analytics Dashboard</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Smart Tourism & Cultural Tech</title>
+    
+    <!-- Tailwind CSS (only once) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    
+    <!-- Font Awesome (use latest single version) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="Footer/footer.css">
+    <link rel="stylesheet" href="Navbar/navbar.css">
+    <link rel="stylesheet" href="forum.css">
+
+</head>
+<body>
+    
+  <!-- Inject navbar here -->
+  <div id="navbar-container"></div>
+
+<br>
+<br>
+<br>
+
+<section class="hero">
+    <div class="container">
+      <h1>Connect with Fellow Travelers</h1>
+      <p>Share experiences, ask questions, and get insider tips from travelers around the world.</p>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search discussions, destinations, or travelers...">
+        <button class="search-btn">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="forum-content">
+        <div class="tabs">
+          <div class="tab active">Recent Discussions</div>
+          <div class="tab">Popular</div>
+          <div class="tab">Unanswered</div>
+          <div class="tab">My Topics</div>
+        </div>
+        
+        <div class="discussions">
+          <div class="discussion-item">
+            <div class="user-avatar">
+              <img src="/api/placeholder/50/50" alt="User Avatar">
+            </div>
+            <div class="discussion-content">
+              <div class="discussion-header">
+                <span class="user-name">Sarah Johnson</span>
+                <span class="post-time">2 hours ago</span>
+              </div>
+              <h3 class="discussion-title"><a href="#">Best hidden gems in Lisbon? Planning a week trip!</a></h3>
+              <p>I'm planning to spend a week in Lisbon next month and want to explore beyond the typical tourist spots. Any recommendations for hidden gems, local restaurants, or unique experiences?</p>
+              <div class="tags">
+                <span class="tag">Portugal</span>
+                <span class="tag">Lisbon</span>
+                <span class="tag">Europe</span>
+                <span class="tag">City Break</span>
+              </div>
+              <div class="discussion-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">💬</span> 24 replies
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">👁️</span> 142 views
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">❤️</span> 18 likes
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="discussion-item">
+            <div class="user-avatar">
+              <img src="/api/placeholder/50/50" alt="User Avatar">
+            </div>
+            <div class="discussion-content">
+              <div class="discussion-header">
+                <span class="user-name">Mark Thompson</span>
+                <span class="post-time">Yesterday</span>
+              </div>
+              <h3 class="discussion-title"><a href="#">Solo female travel safety tips for Southeast Asia</a></h3>
+              <p>My sister is planning her first solo trip to Thailand, Vietnam, and Cambodia. Would appreciate any safety tips, recommended accommodations, or general advice from experienced female travelers!</p>
+              <div class="tags">
+                <span class="tag">Solo Travel</span>
+                <span class="tag">Southeast Asia</span>
+                <span class="tag">Safety</span>
+                <span class="tag">Female Travel</span>
+              </div>
+              <div class="discussion-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">💬</span> 36 replies
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">👁️</span> 231 views
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">❤️</span> 42 likes
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="discussion-item">
+            <div class="user-avatar">
+              <img src="/api/placeholder/50/50" alt="User Avatar">
+            </div>
+            <div class="discussion-content">
+              <div class="discussion-header">
+                <span class="user-name">David Chen</span>
+                <span class="post-time">2 days ago</span>
+              </div>
+              <h3 class="discussion-title"><a href="#">Must-have apps for travel in 2025?</a></h3>
+              <p>I'm updating my travel toolkit for an upcoming world trip. What are your essential travel apps in 2025? Looking for recommendations on navigation, translation, booking, budgeting, and anything else that's made your travels smoother!</p>
+              <div class="tags">
+                <span class="tag">Travel Apps</span>
+                <span class="tag">Technology</span>
+                <span class="tag">Travel Tips</span>
+              </div>
+              <div class="discussion-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">💬</span> 52 replies
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">👁️</span> 418 views
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">❤️</span> 64 likes
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="discussion-item">
+            <div class="user-avatar">
+              <img src="/api/placeholder/50/50" alt="User Avatar">
+            </div>
+            <div class="discussion-content">
+              <div class="discussion-header">
+                <span class="user-name">Elena Rodriguez</span>
+                <span class="post-time">3 days ago</span>
+              </div>
+              <h3 class="discussion-title"><a href="#">Traveling with food allergies in Japan - Help!</a></h3>
+              <p>I have severe peanut and shellfish allergies and am planning a 2-week trip to Japan. Does anyone have experience navigating food allergies there? Looking for translation cards, restaurant recommendations, and general advice.</p>
+              <div class="tags">
+                <span class="tag">Japan</span>
+                <span class="tag">Food Allergies</span>
+                <span class="tag">Asia</span>
+                <span class="tag">Food</span>
+              </div>
+              <div class="discussion-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">💬</span> 28 replies
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">👁️</span> 196 views
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">❤️</span> 32 likes
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="discussion-item">
+            <div class="user-avatar">
+              <img src="/api/placeholder/50/50" alt="User Avatar">
+            </div>
+            <div class="discussion-content">
+              <div class="discussion-header">
+                <span class="user-name">Michael Okoye</span>
+                <span class="post-time">4 days ago</span>
+              </div>
+              <h3 class="discussion-title"><a href="#">Road trip route suggestions for Southern Africa</a></h3>
+              <p>Planning a 3-week road trip through Southern Africa (South Africa, Namibia, Botswana, Zimbabwe). Anyone done a similar route who can share their itinerary, must-see places, and driving tips?</p>
+              <div class="tags">
+                <span class="tag">Africa</span>
+                <span class="tag">Road Trip</span>
+                <span class="tag">Safari</span>
+                <span class="tag">Adventure</span>
+              </div>
+              <div class="discussion-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">💬</span> 19 replies
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">👁️</span> 173 views
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">❤️</span> 24 likes
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pagination">
+          <a href="#" class="page-link">1</a>
+          <a href="#" class="page-link active">2</a>
+          <a href="#" class="page-link">3</a>
+          <a href="#" class="page-link">4</a>
+          <a href="#" class="page-link">5</a>
+          <a href="#" class="page-link">Next</a>
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        <div class="sidebar-widget">
+          <div class="widget-header">Start a Discussion</div>
+          <div class="widget-content">
+            <p>Have a question or want to share your travel experience? Start a new discussion and connect with travelers from around the world.</p>
+            <div class="action-buttons">
+              <button class="btn btn-primary btn-block">New Discussion</button>
+              <button class="btn btn-accent btn-block">Find Travel Buddy</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sidebar-widget">
+          <div class="widget-header">Trending Topics</div>
+          <div class="widget-content">
+            <ul class="trending-topics">
+              <li>
+                <a href="#">
+                  <span class="number">1</span>
+                  <div>
+                    <div>Sustainable Travel Tips 2025</div>
+                    <div class="topic-users">
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="number">2</span>
+                  <div>
+                    <div>New Entry Requirements for EU Countries</div>
+                    <div class="topic-users">
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="number">3</span>
+                  <div>
+                    <div>Digital Nomad Visas: Latest Updates</div>
+                    <div class="topic-users">
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="number">4</span>
+                  <div>
+                    <div>Best Travel Insurance for Adventure Trips</div>
+                    <div class="topic-users">
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                      <div class="topic-user"><img src="/api/placeholder/30/30" alt="User"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="sidebar-widget">
+          <div class="widget-header">Featured Travelers</div>
+          <div class="widget-content">
+            <ul class="featured-travelers">
+              <li class="featured-traveler">
+                <div class="user-avatar">
+                  <img src="/api/placeholder/50/50" alt="Featured Traveler">
+                </div>
+                <div class="traveler-info">
+                  <div class="traveler-name">Rebecca Liu</div>
+                  <div class="traveler-details">Adventure & Wildlife Photography</div>
+                  <div class="stats">
+                    <div class="stat">
+                      <span class="stat-icon">🌍</span> 47 countries
+                    </div>
+                    <div class="stat">
+                      <span class="stat-icon">📝</span> 89 posts
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="featured-traveler">
+                <div class="user-avatar">
+                  <img src="/api/placeholder/50/50" alt="Featured Traveler">
+                </div>
+                <div class="traveler-info">
+                  <div class="traveler-name">Carlos Mendez</div>
+                  <div class="traveler-details">Culinary Explorer & Food Blogger</div>
+                  <div class="stats">
+                    <div class="stat">
+                      <span class="stat-icon">🌍</span> 32 countries
+                    </div>
+                    <div class="stat">
+                      <span class="stat-icon">📝</span> 65 posts
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="featured-traveler">
+                <div class="user-avatar">
+                  <img src="/api/placeholder/50/50" alt="Featured Traveler">
+                </div>
+                <div class="traveler-info">
+                  <div class="traveler-name">Aisha Patel</div>
+                  <div class="traveler-details">Solo Female Traveler & Hiker</div>
+                  <div class="stats">
+                    <div class="stat">
+                      <span class="stat-icon">🌍</span> 28 countries
+                    </div>
+                    <div class="stat">
+                      <span class="stat-icon">📝</span> 53 posts
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer placeholder -->
+   <div id="footer-container"></div>
+
+  <!-- Scripts -->
+
+    <!-- Google Analytics Script -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="dashboard.js"></script>
+  <script src="../Footer/footer.js"></script>
+  <script src="../Navbar/navbar.js"></script>
+</body>
+</html>
