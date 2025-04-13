@@ -1,6 +1,6 @@
 // Inside components/footer.js
 document.addEventListener("DOMContentLoaded", function () {
-  const nestedDirs = ["Site Data", "3D Earth Model", "Virtual Destination", "Blog", "Forum"];
+  const nestedDirs = ["Site_Data", "3D_Earth_Model", "AI_Assitance","Destination","Booking","Map","Virtual_Tour","Tour_Guide","Event_Festival", "Blog","Cultural_Historical", "Forum"];
   const currentPath = decodeURIComponent(window.location.pathname); // Convert %20 to space
   let path = "Footer/footer.html";
 
