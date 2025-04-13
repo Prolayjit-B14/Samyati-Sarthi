@@ -4,120 +4,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanderlust - Photos & Videos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="blog.css">
-    <link rel="stylesheet" href="Footer/footer.css">
-    <link rel="stylesheet" href="Navbar/navbar.css">
+        <!-- Tailwind CSS (only once) -->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    
+        <!-- Font Awesome (use latest single version) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="Footer/footer.css">
+        <link rel="stylesheet" href="Navbar/navbar.css">
 </head>
 <body>
-
+      <!-- Inject navbar here -->
+  <div id="navbar-container"></div>
     <!-- Hero Section -->
     <section class="hero">
         <h1>Share Your Journey</h1>
         <p>Explore authentic travel moments captured by our global community of adventurers</p>
-        <button class="btn btn-primary">Upload Your Content</button>
     </section>
 
-    <!-- Filter and Search Section -->
-    <div class="container">
-        <div class="filters">
-            <div class="filter-group">
-                <label for="location">Destination</label>
-                <select id="location">
-                    <option value="">All Destinations</option>
-                    <option value="europe">Europe</option>
-                    <option value="asia">Asia</option>
-                    <option value="africa">Africa</option>
-                    <option value="namerica">North America</option>
-                    <option value="samerica">South America</option>
-                    <option value="oceania">Oceania</option>
-                </select>
+
+<!-- Filter and Search Section -->
+<div class="container">
+    <div class="filters">
+        <div class="filter-group">
+            <label for="location">Destination</label>
+            <select id="location">
+                <option value="">All Destinations</option>
+                <option value="europe">Europe</option>
+                <option value="asia">Asia</option>
+                <option value="africa">Africa</option>
+                <option value="namerica">North America</option>
+                <option value="samerica">South America</option>
+                <option value="oceania">Oceania</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="category">Category</label>
+            <select id="category">
+                <option value="">All Categories</option>
+                <option value="nature">Nature</option>
+                <option value="culture">Culture</option>
+                <option value="food">Food & Cuisine</option>
+                <option value="adventure">Adventure</option>
+                <option value="wildlife">Wildlife</option>
+                <option value="cityscape">Cityscapes</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="season">Season</label>
+            <select id="season">
+                <option value="">All Seasons</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="autumn">Autumn</option>
+                <option value="winter">Winter</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="content-type">Content Type</label>
+            <select id="content-type">
+                <option value="">All Content</option>
+                <option value="photos">Photos</option>
+                <option value="videos">Videos</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="search">Search</label>
+            <input type="text" id="search" placeholder="Keywords...">
+        </div>
+        <button class="btn btn-primary">Apply Filters</button>
+    </div>
+    <!-- Gallery Section -->
+
+    <div class="gallery-controls">
+            <div class="view-options flex gap-4 mb-6">
+                <div class="view-option active cursor-pointer">Grid View</div>
+                <div class="view-option cursor-pointer">Map View</div>
+                <div class="view-option cursor-pointer">Featured</div>
             </div>
-            <div class="filter-group">
-                <label for="category">Category</label>
-                <select id="category">
-                    <option value="">All Categories</option>
-                    <option value="nature">Nature</option>
-                    <option value="culture">Culture</option>
-                    <option value="food">Food & Cuisine</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="wildlife">Wildlife</option>
-                    <option value="cityscape">Cityscapes</option>
-                </select>
+        <div>
+            <select id="sort">
+                <option value="trending">Trending</option>
+                <option value="recent">Most Recent</option>
+                <option value="popular">Most Popular</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" data-location="europe" data-category="nature" data-season="summer" data-content-type="photos">
+            <img src="/api/placeholder/400/250" alt="Sunset in Santorini" class="gallery-image">
+            <div class="gallery-content">
+                <div class="gallery-location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Santorini, Greece
+                </div>
+                <h3 class="gallery-title">Sunset Over the Caldera</h3>
+                <p>The most breathtaking sunset I've ever experienced. Worth every step to find this viewpoint!</p>
+                <div class="gallery-meta">
+                    <div class="gallery-user">
+                        <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
+                        <span>Maria T.</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <div class="action-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            <span>247</span>
+                        </div>
+                        <div class="action-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span>42</span>
+                        </div>
+                        <div class="action-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                <polyline points="16 6 12 2 8 6"></polyline>
+                                <line x1="12" y1="2" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="filter-group">
-                <label for="season">Season</label>
-                <select id="season">
-                    <option value="">All Seasons</option>
-                    <option value="spring">Spring</option>
-                    <option value="summer">Summer</option>
-                    <option value="autumn">Autumn</option>
-                    <option value="winter">Winter</option>
-                </select>
+        </div>
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" data-location="asia" data-category="beaches" data-season="summer" data-content-type="photos">
+            <img src="/api/placeholder/400/250" alt="Beach in Bali" class="gallery-image">
+            <div class="gallery-content">
+                <div class="gallery-location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Bali, Indonesia
+                </div>
+                <h3 class="gallery-title">Golden Sands</h3>
+                <p>A peaceful morning on Bali's shores with clear blue waters and golden sands.</p>
+                <div class="gallery-meta">
+                    <div class="gallery-user">
+                        <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
+                        <span>John D.</span>
+                    </div>
+                    <div class="gallery-actions">
+                        <div class="action-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            <span>188</span>
+                        </div>
+                        <div class="action-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span>12</span>
+                        </div>
+                        <div class="action-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                <polyline points="16 6 12 2 8 6"></polyline>
+                                <line x1="12" y1="2" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="filter-group">
-                <label for="content-type">Content Type</label>
-                <select id="content-type">
-                    <option value="">All Content</option>
-                    <option value="photos">Photos</option>
-                    <option value="videos">Videos</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="search">Search</label>
-                <input type="text" id="search" placeholder="Keywords...">
-            </div>
-            <button class="btn btn-primary">Apply Filters</button>
         </div>
 
-        <!-- Gallery Section -->
-        <div class="gallery-controls">
-            <div class="view-options">
-                <div class="view-option active">Grid View</div>
-                <div class="view-option">Map View</div>
-                <div class="view-option">Featured</div>
-            </div>
-            <div>
-                <select id="sort">
-                    <option value="trending">Trending</option>
-                    <option value="recent">Most Recent</option>
-                    <option value="popular">Most Popular</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="gallery">
-            <!-- Gallery Item 1 - Photo -->
-            <div class="gallery-item">
-                <img src="/api/placeholder/400/250" alt="Sunset in Santorini" class="gallery-image">
+            <!-- Gallery Item 3 -->
+            <div class="gallery-item" data-location="asia" data-category="nature" data-season="winter" data-content-type="photos">
+                <img src="/api/placeholder/400/250" alt="Mount Fuji" class="gallery-image">
                 <div class="gallery-content">
                     <div class="gallery-location">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
-                        Santorini, Greece
+                        Mount Fuji, Japan
                     </div>
-                    <h3 class="gallery-title">Sunset Over the Caldera</h3>
-                    <p>The most breathtaking sunset I've ever experienced. Worth every step to find this viewpoint!</p>
+                    <h3 class="gallery-title">Winter's Embrace</h3>
+                    <p>The snow-covered peaks of Mount Fuji in winter are a sight to behold.</p>
                     <div class="gallery-meta">
                         <div class="gallery-user">
                             <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Maria T.</span>
+                            <span>Yuki T.</span>
                         </div>
                         <div class="gallery-actions">
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                                 </svg>
-                                <span>247</span>
+                                <span>320</span>
                             </div>
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                 </svg>
-                                <span>42</span>
+                                <span>88</span>
                             </div>
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -130,60 +221,8 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Gallery Item 2 - Video -->
-            <div class="gallery-item">
-                <div class="gallery-video">
-                    <!-- Video placeholder -->
-                    <img src="/api/placeholder/400/250" alt="Northern Lights in Iceland" class="gallery-image">
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white" stroke="none">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                    </div>
-                </div>
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Reykjavik, Iceland
-                    </div>
-                    <h3 class="gallery-title">Dancing Northern Lights</h3>
-                    <p>Captured this incredible aurora display during our winter trip. Truly magical experience!</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Alex K.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>189</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>28</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gallery Item 3 - Photo -->
-            <div class="gallery-item">
+            <!-- Gallery Item 4 -->
+            <div class="gallery-item" data-location="south-america" data-category="adventure" data-season="autumn" data-content-type="photos">
                 <img src="/api/placeholder/400/250" alt="Machu Picchu" class="gallery-image">
                 <div class="gallery-content">
                     <div class="gallery-location">
@@ -193,8 +232,8 @@
                         </svg>
                         Machu Picchu, Peru
                     </div>
-                    <h3 class="gallery-title">Morning Mist at Machu Picchu</h3>
-                    <p>Arrived at 6am to witness the ancient city emerging from the clouds. Absolutely worth the early wake-up call!</p>
+                    <h3 class="gallery-title">The Lost City</h3>
+                    <p>Hidden in the mountains of Peru, Machu Picchu stands as a testament to Incan civilization.</p>
                     <div class="gallery-meta">
                         <div class="gallery-user">
                             <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
@@ -205,13 +244,13 @@
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                                 </svg>
-                                <span>315</span>
+                                <span>412</span>
                             </div>
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                 </svg>
-                                <span>59</span>
+                                <span>56</span>
                             </div>
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -224,37 +263,36 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Gallery Item 4 - Photo -->
-            <div class="gallery-item">
-                <img src="/api/placeholder/400/250" alt="Street food in Bangkok" class="gallery-image">
+            <!-- Gallery Item 5 -->
+            <div class="gallery-item" data-location="north-america" data-category="urban" data-season="fall" data-content-type="photos">
+                <img src="/api/placeholder/400/250" alt="New York City" class="gallery-image">
                 <div class="gallery-content">
                     <div class="gallery-location">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
-                        Bangkok, Thailand
+                        New York City, USA
                     </div>
-                    <h3 class="gallery-title">Street Food Heaven</h3>
-                    <p>Exploring the vibrant night markets of Bangkok. The aromas, flavors, and bustling atmosphere are unforgettable!</p>
+                    <h3 class="gallery-title">City Lights</h3>
+                    <p>The dazzling lights of New York City at night are a sight that never grows old.</p>
                     <div class="gallery-meta">
                         <div class="gallery-user">
                             <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Nina P.</span>
+                            <span>Alex P.</span>
                         </div>
                         <div class="gallery-actions">
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                                 </svg>
-                                <span>228</span>
+                                <span>512</span>
                             </div>
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                 </svg>
-                                <span>37</span>
+                                <span>112</span>
                             </div>
                             <div class="action-btn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -267,33 +305,174 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Gallery Item 5 - Video -->
-            <div class="gallery-item">
-                <div class="gallery-video">
-                    <!-- Video placeholder -->
-                    <img src="/api/placeholder/400/250" alt="Safari in Kenya" class="gallery-image">
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white" stroke="none">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                    </div>
-                </div>
+            <!-- Gallery Item 6 -->
+            <div class="gallery-item" data-location="africa" data-category="wildlife" data-season="summer" data-content-type="videos">
+                <img src="/api/placeholder/400/250" alt="Serengeti Safari" class="gallery-image">
                 <div class="gallery-content">
                     <div class="gallery-location">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
-                        Masai Mara, Kenya
+                        Serengeti, Tanzania
                     </div>
-                    <h3 class="gallery-title">Lion Pride at Sunrise</h3>
-                    <p>Witnessed this incredible moment during our safari. A pride of lions returning from their night hunt as the sun rose.</p>
+                    <h3 class="gallery-title">Safari Adventure</h3>
+                    <p>Experience the thrill of a safari in the heart of Africa's Serengeti National Park.</p>
                     <div class="gallery-meta">
                         <div class="gallery-user">
                             <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>David W.</span>
+                            <span>Samuel K.</span>
                         </div>
                         <div class="gallery-actions">
                             <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>690</span>
+                            </div>
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>103</span>
+                            </div>
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                    <polyline points="16 6 12 2 8 6"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Gallery Item 7 -->
+            <div class="gallery-item" data-location="europe" data-category="architecture" data-season="spring" data-content-type="photos">
+                <img src="/api/placeholder/400/250" alt="Eiffel Tower" class="gallery-image">
+                <div class="gallery-content">
+                    <div class="gallery-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Paris, France
+                    </div>
+                    <h3 class="gallery-title">The Iron Lady</h3>
+                    <p>The Eiffel Tower stands tall as one of the most recognizable landmarks in the world.</p>
+                    <div class="gallery-meta">
+                        <div class="gallery-user">
+                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
+                            <span>Marie L.</span>
+                        </div>
+                        <div class="gallery-actions">
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>850</span>
+                            </div>
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>232</span>
+                            </div>
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                    <polyline points="16 6 12 2 8 6"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Gallery Item 8 -->
+            <div class="gallery-item" data-location="oceania" data-category="nature" data-season="spring" data-content-type="photos">
+                <img src="/api/placeholder/400/250" alt="Great Barrier Reef" class="gallery-image">
+                <div class="gallery-content">
+                    <div class="gallery-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Great Barrier Reef, Australia
+                    </div>
+                    <h3 class="gallery-title">Underwater Paradise</h3>
+                    <p>The vibrant marine life of the Great Barrier Reef makes it a must-see for nature lovers.</p>
+                    <div class="gallery-meta">
+                        <div class="gallery-user">
+                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
+                            <span>Tom H.</span>
+                        </div>
+                        <div class="gallery-actions">
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>725</span>
+                            </div>
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span>47</span>
+                            </div>
+                            <div class="action-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                    <polyline points="16 6 12 2 8 6"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div style="text-align: center; margin-bottom: 60px;">
+        <button class="btn btn-outline" style="background-color: #f5f5f5; color: #2a5d84; border: 2px solid #2a5d84; padding: 12px 25px;">
+            Load More
+        </button>
+    </div>
+
+        <!-- Upload Section -->
+        <section class="upload-section bg-gray-50 py-10">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-800">Share Your Travel Moments</h2>
+                <p class="text-lg text-gray-600 mt-2 mb-8">Upload your photos and videos to inspire fellow travelers</p>
+                
+                <div class="upload-area bg-white shadow-lg rounded-lg p-8 transition duration-300 ease-in-out transform hover:scale-105">
+                    <div class="upload-icon mb-6">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-700">Drag & Drop Files Here</h3>
+                    <p class="text-gray-500 mt-2 mb-6">or</p>
+                    <button class="btn btn-primary px-6 py-3 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition duration-200 ease-in-out">
+                        Browse Files
+                    </button>
+                    <p class="mt-4 text-sm text-gray-500">
+                        Supported formats: JPG, PNG, MP4, MOV. Max size: 20MB
+                    </p>
+                </div>
+            </div>
+        </section>
+   <!-- Footer placeholder -->
+   <div id="footer-container"></div>
+
+<!-- JavaScript for interactive features -->
+<script src="script.js"></script>
+<script src="../Footer/footer.js"></script>
+<script src="../Navbar/navbar.js"></script>
+
+</body>
+</html>
