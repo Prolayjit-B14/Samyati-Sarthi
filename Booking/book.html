@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Booking System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+      <!-- Tailwind CSS (only once) -->
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    
+      <!-- Font Awesome (use latest single version) -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+      <!-- Custom Styles -->
+      <link rel="stylesheet" href="dashboard.css">
+      <link rel="stylesheet" href="Footer/footer.css">
+      <link rel="stylesheet" href="Navbar/navbar.css">
+  
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-indigo-600">SmartBooking AI</h1>
+    <div class="hidden md:block">
+      <ul class="flex space-x-6">
+        <li><a href="#" class="hover:text-indigo-600">Home</a></li>
+        <li><a href="#" class="hover:text-indigo-600">Features</a></li>
+        <li><a href="#" class="hover:text-indigo-600">Contact</a></li>
+      </ul>
+    </div>
+    <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden bg-white py-2 px-4 shadow-md md:hidden">
+    <ul class="space-y-2">
+      <li><a href="#" class="block py-2 hover:text-indigo-600">Home</a></li>
+      <li><a href="#" class="block py-2 hover:text-indigo-600">Features</a></li>
+      <li><a href="#" class="block py-2 hover:text-indigo-600">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="text-center py-16 md:py-20 bg-gradient-to-r from-indigo-600 to-purple-500 text-white">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">AI-Optimized Reservations</h2>
+    <p class="text-lg max-w-xl mx-auto mb-8 px-4">Book smarter with real-time optimization powered by AI. Reduce wait times, maximize availability, and enjoy seamless booking.</p>
+    <a href="#booking" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">Book Now</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-12 px-4 max-w-6xl mx-auto">
+    <h3 class="text-2xl font-bold mb-8 text-center">Why Choose SmartBooking AI?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="text-indigo-600 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-semibold mb-2 text-center">Real-time Optimization</h4>
+        <p class="text-gray-600">Our AI analyzes booking patterns to suggest the best available times, reducing wait times.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="text-indigo-600 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-semibold mb-2 text-center">Secure Bookings</h4>
+        <p class="text-gray-600">End-to-end encryption for all your booking information with confirmation system.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="text-indigo-600 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-semibold mb-2 text-center">Smart Reminders</h4>
+        <p class="text-gray-600">Automated notifications and calendar integration to keep your schedule organized.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section id="booking" class="py-12 md:py-16 px-4 max-w-3xl mx-auto">
+    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">Reserve Your Spot</h3>
+    <form id="bookingForm" class="bg-white p-6 rounded-xl shadow-md space-y-4">
+      <div>
+        <label class="block font-semibold">Full Name</label>
+        <input type="text" id="fullName" class="w-full border rounded-lg p-2 mt-1" placeholder="Your Name" required>
+      </div>
+      <div>
+        <label class="block font-semibold">Email</label>
+        <input type="email" id="email" class="w-full border rounded-lg p-2 mt-1" placeholder="your@email.com" required>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block font-semibold">Date</label>
+          <input type="date" id="bookingDate" class="w-full border rounded-lg p-2 mt-1" required>
+        </div>
+        <div>
+          <label class="block font-semibold">Time</label>
+          <input type="time" id="bookingTime" class="w-full border rounded-lg p-2 mt-1" required>
+        </div>
+      </div>
+      <div>
+        <label class="block font-semibold">Guests</label>
+        <input type="number" id="guests" min="1" max="10" class="w-full border rounded-lg p-2 mt-1" placeholder="e.g. 2" required>
+      </div>
+      <div>
+        <label class="block font-semibold">Special Requests</label>
+        <textarea id="requests" class="w-full border rounded-lg p-2 mt-1 h-24" placeholder="Any special requests or notes..."></textarea>
+      </div>
+      <div id="aiSuggestion" class="hidden bg-blue-50 p-4 rounded-lg border border-blue-200 mt-4">
+        <h4 class="font-semibold text-blue-700 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          AI Suggestion
+        </h4>
+        <p class="text-sm text-blue-600" id="suggestionText">Based on current bookings, we recommend <span id="betterTime" class="font-medium">6:30 PM</span> for shorter wait times.</p>
+        <button type="button" id="applySuggestion" class="text-sm text-blue-700 font-medium mt-2 hover:text-blue-900">Apply this time</button>
+      </div>
+      <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition w-full font-medium">Confirm Booking</button>
+    </form>
+  </section>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg max-w-md w-full p-6 mx-4">
+      <div class="text-center">
+        <div class="text-green-500 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Booking Confirmed!</h3>
+        <p class="text-gray-600 mb-4">Your reservation has been successfully booked. A confirmation email has been sent to your inbox.</p>
+        <div class="bg-gray-50 p-4 rounded-lg text-left mb-4">
+          <p><span class="font-medium">Name:</span> <span id="confirmName"></span></p>
+          <p><span class="font-medium">Date:</span> <span id="confirmDate"></span></p>
+          <p><span class="font-medium">Time:</span> <span id="confirmTime"></span></p>
+          <p><span class="font-medium">Guests:</span> <span id="confirmGuests"></span></p>
+        </div>
+        <button id="closeModal" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Inject navbar here -->
+<div id="navbar-container"></div>
+
+<!-- Footer placeholder -->
+<div id="footer-container"></div>
+  <script src="dashboard.js"></script>
+  <script src="../Footer/footer.js"></script>
+  <script src="../Navbar/navbar.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Set default date to tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const dateString = tomorrow.toISOString().split('T')[0];
+    document.getElementById('bookingDate').value = dateString;
+    
+    // Form submission
+    const bookingForm = document.getElementById('bookingForm');
+    const confirmationModal = document.getElementById('confirmationModal');
+    const closeModal = document.getElementById('closeModal');
+    
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('fullName').value;
+      const date = document.getElementById('bookingDate').value;
+      const time = document.getElementById('bookingTime').value;
+      const guests = document.getElementById('guests').value;
+      
+      // Update confirmation modal
+      document.getElementById('confirmName').textContent = name;
+      document.getElementById('confirmDate').textContent = formatDate(date);
+      document.getElementById('confirmTime').textContent = formatTime(time);
+      document.getElementById('confirmGuests').textContent = guests;
+      
+      // Show confirmation modal
+      confirmationModal.classList.remove('hidden');
+    });
+    
+    closeModal.addEventListener('click', () => {
+      confirmationModal.classList.add('hidden');
+      bookingForm.reset();
+      document.getElementById('bookingDate').value = dateString;
+    });
+    
+    // Format date for display
+    function formatDate(dateString) {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+    
+    // Format time for display
+    function formatTime(timeString) {
+      const [hours, minutes] = timeString.split(':');
+      const hour = parseInt(hours);
+      const ampm = hour >= 12 ? 'PM' : 'AM';
+      const hour12 = hour % 12 || 12;
+      return `${hour12}:${minutes} ${ampm}`;
+    }
+    
+    // AI suggestion logic
+    document.getElementById('bookingTime').addEventListener('change', function() {
+      const time = this.value;
+      const hour = parseInt(time.split(':')[0]);
+      
+      // For demo purposes, show AI suggestion for busy hours (6-8pm)
+      if (hour >= 18 && hour < 20) {
+        document.getElementById('aiSuggestion').classList.remove('hidden');
+        
+        // Generate alternative time suggestions
+        let suggestedHour;
+        if (hour === 18) {
+          suggestedHour = '5:30 PM';
+        } else {
+          suggestedHour = '8:30 PM';
+        }
+        
+        document.getElementById('betterTime').textContent = suggestedHour;
+      } else {
+        document.getElementById('aiSuggestion').classList.add('hidden');
+      }
+    });
+    
+    // Apply suggestion button
+    document.getElementById('applySuggestion').addEventListener('click', function() {
+      const suggestion = document.getElementById('betterTime').textContent;
+      let [hours, minutes] = suggestion.split(':');
+      minutes = minutes.split(' ')[0];
+      
+      // Convert to 24-hour format
+      if (suggestion.includes('PM') && hours !== '12') {
+        hours = parseInt(hours) + 12;
+      }
+      if (suggestion.includes('AM') && hours === '12') {
+        hours = '00';
+      }
+      
+      // Ensure hours and minutes are two digits
+      hours = hours.toString().padStart(2, '0');
+      
+      document.getElementById('bookingTime').value = `${hours}:${minutes}`;
+      document.getElementById('aiSuggestion').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>

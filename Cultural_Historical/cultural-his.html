@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultural & Historical Sites | Smart Tourism</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+      <!-- Tailwind CSS (only once) -->
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    
+      <!-- Font Awesome (use latest single version) -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+      <!-- Custom Styles -->
+      <link rel="stylesheet" href="dashboard.css">
+      <link rel="stylesheet" href="Footer/footer.css">
+      <link rel="stylesheet" href="Navbar/navbar.css">
+  
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+
+  <!-- Hero Section -->
+  <header class="relative">
+    <div class="h-96 bg-cover bg-center" style="background-image: url('/api/placeholder/1200/500')">
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center">
+        <div class="container mx-auto px-4 text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Cultural & Historical Sites</h1>
+          <p class="text-xl md:text-2xl max-w-2xl">Discover the world's most significant cultural heritage with interactive guides and immersive technology</p>
+          <div class="mt-8">
+            <a href="#ar-guide" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg mr-4">
+              Try AR Guide Demo
+            </a>
+            <a href="#sites" class="border-2 border-white hover:bg-white hover:text-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Browse Sites
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Introduction Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-full md:w-1/2">
+          <h2 class="text-3xl font-bold mb-4">Discover Cultural Heritage Like Never Before</h2>
+          <p class="text-gray-600 mb-4">Our smart tourism platform combines cutting-edge technology with cultural expertise to transform how you experience historical and cultural sites worldwide.</p>
+          <p class="text-gray-600 mb-6">Whether you're exploring ancient ruins, visiting museums, or wandering through historical districts, our tools provide context, stories, and immersive experiences that bring history to life.</p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-blue-100 p-2 rounded-full mr-3">
+                <i class="fas fa-vr-cardboard text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="font-bold">AR Historical Overlays</h3>
+                <p class="text-sm text-gray-600">See how sites looked throughout history with time-travel AR</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-green-100 p-2 rounded-full mr-3">
+                <i class="fas fa-headphones text-green-600"></i>
+              </div>
+              <div>
+                <h3 class="font-bold">Audio Stories & Guides</h3>
+                <p class="text-sm text-gray-600">Listen to expert narrations and local storytellers</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-purple-100 p-2 rounded-full mr-3">
+                <i class="fas fa-users text-purple-600"></i>
+              </div>
+              <div>
+                <h3 class="font-bold">Cultural Context</h3>
+                <p class="text-sm text-gray-600">Understand traditions, customs, and historical significance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w-full md:w-1/2">
+          <img src="/api/placeholder/600/400" alt="AR Cultural Experience" class="rounded-lg shadow-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Sites -->
+  <section id="sites" class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-2 text-center">Featured Cultural Sites</h2>
+      <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">Explore some of the world's most remarkable cultural and historical landmarks with our enhanced digital experiences</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Site 1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="/api/placeholder/400/250" alt="Machu Picchu" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">UNESCO World Heritage</span>
+              <span class="text-sm text-gray-500">Peru</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2">Machu Picchu</h3>
+            <p class="text-gray-600 mb-4">Ancient Incan citadel set high in the Andes Mountains, featuring remarkable stone architecture and panoramic views.</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.9/5 (1,247 reviews)</span>
+              </div>
+              <a href="#machu-picchu" class="text-blue-600 hover:underline">Explore</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Site 2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="/api/placeholder/400/250" alt="Acropolis" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">UNESCO World Heritage</span>
+              <span class="text-sm text-gray-500">Greece</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2">Acropolis of Athens</h3>
+            <p class="text-gray-600 mb-4">Ancient citadel perched above Athens containing the Parthenon and other architectural masterpieces of classical Greece.</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.8/5 (2,018 reviews)</span>
+              </div>
+              <a href="#acropolis" class="text-blue-600 hover:underline">Explore</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Site 3 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="/api/placeholder/400/250" alt="Angkor Wat" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">UNESCO World Heritage</span>
+              <span class="text-sm text-gray-500">Cambodia</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2">Angkor Wat</h3>
+            <p class="text-gray-600 mb-4">Enormous Buddhist temple complex built in the 12th century, known for its grandeur and intricate bas-reliefs.</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.9/5 (1,853 reviews)</span>
+              </div>
+              <a href="#angkor-wat" class="text-blue-600 hover:underline">Explore</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Site 4 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="/api/placeholder/400/250" alt="Taj Mahal" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">UNESCO World Heritage</span>
+              <span class="text-sm text-gray-500">India</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2">Taj Mahal</h3>
+            <p class="text-gray-600 mb-4">Iconic ivory-white marble mausoleum built by Emperor Shah Jahan in memory of his wife, a masterpiece of Mughal architecture.</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.7/5 (3,416 reviews)</span>
+              </div>
+              <a href="#taj-mahal" class="text-blue-600 hover:underline">Explore</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Site 5 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="/api/placeholder/400/250" alt="Petra" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">UNESCO World Heritage</span>
+              <span class="text-sm text-gray-500">Jordan</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2">Petra</h3>
+            <p class="text-gray-600 mb-4">Ancient city carved into rose-colored rock faces, featuring elaborate tombs and temples dating back to 300 B.C.</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.8/5 (1,573 reviews)</span>
+              </div>
+              <a href="#petra" class="text-blue-600 hover:underline">Explore</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Site 6 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="/api/placeholder/400/250" alt="Great Wall" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">UNESCO World Heritage</span>
+              <span class="text-sm text-gray-500">China</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2">Great Wall of China</h3>
+            <p class="text-gray-600 mb-4">Massive stone fortification stretching thousands of miles, built over centuries to protect Chinese states from invasions.</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                <span class="text-sm font-medium">4.7/5 (5,219 reviews)</span>
+              </div>
+              <a href="#great-wall" class="text-blue-600 hover:underline">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- View More Button -->
+      <div class="text-center mt-8">
+        <a href="#all-sites" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+          View All Cultural Sites
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AR Experience Preview -->
+  <section id="ar-guide" class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-2 text-center">AR Cultural Guide Experience</h2>
+      <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">Point your device at monuments and landmarks to unlock interactive historical information</p>
+      
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-full md:w-1/2">
+          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg relative">
+            <img src="/api/placeholder/600/400" alt="AR Demo" class="w-full">
+            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+              <button class="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-4 border-2 border-white transition-all">
+                <i class="fas fa-play text-white text-2xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-4">Time Travel Through History</h3>
+          <p class="text-gray-600 mb-4">Our AR guide transforms how you experience cultural sites by overlaying digital information directly into your real-world view:</p>
+          
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>See historical reconstructions of ruins and damaged sites</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>Interact with 3D models of artifacts and architectural elements</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>View different historical periods and architectural changes over time</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>Access expert commentary and historical context in multiple languages</span>
+            </li>
+          </ul>
+          
+          <div class="flex gap-4">
+            <a href="#app-store" class="flex items-center justify-center bg-black text-white rounded-lg px-4 py-2 w-40">
+              <i class="fab fa-apple text-xl mr-2"></i>
+              <div>
+                <div class="text-xs">Download on the</div>
+                <div class="font-medium">App Store</div>
+              </div>
+            </a>
+            <a href="#google-play" class="flex items-center justify-center bg-black text-white rounded-lg px-4 py-2 w-40">
+              <i class="fab fa-google-play text-xl mr-2"></i>
+              <div>
+                <div class="text-xs">Get it on</div>
+                <div class="font-medium">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Experiences -->
+  <section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-2 text-center">Cultural Experiences</h2>
+      <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">Dive deeper into local cultures with immersive experiences and authentic interactions</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Experience 1 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/api/placeholder/400/200" alt="Traditional Crafts" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Traditional Craft Workshops</h3>
+            <p class="text-gray-600 mb-4">Learn from master craftspeople and create your own authentic souvenirs with guided AR instructions.</p>
+            <a href="#workshops" class="text-blue-600 hover:underline">Find workshops</a>
+          </div>
+        </div>
+        
+        <!-- Experience 2 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/api/placeholder/400/200" alt="Local Cuisine" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Culinary Heritage Experiences</h3>
+            <p class="text-gray-600 mb-4">Discover food traditions with AI-powered dish recognition and cultural context for local cuisine.</p>
+            <a href="#cuisine" class="text-blue-600 hover:underline">Explore local foods</a>
+          </div>
+        </div>
+        
+        <!-- Experience 3 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/api/placeholder/400/200" alt="Living History" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Living History Encounters</h3>
+            <p class="text-gray-600 mb-4">Interact with AI historical figures and witness traditional ceremonies through mixed reality.</p>
+            <a href="#living-history" class="text-blue-600 hover:underline">Find experiences</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-2 text-center">Global Cultural Heritage Map</h2>
+      <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">Discover and explore cultural sites and traditions from around the world</p>
+      
+      <div class="bg-gray-100 rounded-lg p-4 h-96 mb-6">
+        <!-- Map placeholder -->
+        <div id="cultural-map" class="w-full h-full bg-blue-50 rounded border border-gray-300 flex items-center justify-center">
+          <div class="text-center">
+            <i class="fas fa-map-marked-alt text-blue-400 text-5xl mb-4"></i>
+            <p class="text-gray-500">Interactive cultural heritage map loads here</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 cursor-pointer transition-colors">
+          <h3 class="font-bold mb-1">UNESCO Sites</h3>
+          <p class="text-sm text-gray-600">1,154 locations worldwide</p>
+        </div>
+        <div class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 cursor-pointer transition-colors">
+          <h3 class="font-bold mb-1">Indigenous Heritage</h3>
+          <p class="text-sm text-gray-600">3,721 cultural traditions</p>
+        </div>
+        <div class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 cursor-pointer transition-colors">
+          <h3 class="font-bold mb-1">Historical Landmarks</h3>
+          <p class="text-sm text-gray-600">8,953 significant sites</p>
+        </div>
+        <div class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 cursor-pointer transition-colors">
+          <h3 class="font-bold mb-1">Museums & Galleries</h3>
+          <p class="text-sm text-gray-600">5,672 institutions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNESCO Collaboration -->
+  <section class="py-12 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="w-full md:w-1/3 text-center">
+          <img src="/api/placeholder/250/100" alt="UNESCO Logo" class="h-16 mx-auto mb-4">
+          <div class="text-sm text-gray-500">Official technical partner</div>
+        </div>
+        
+        <div class="w-full md:w-2/3">
+          <h2 class="text-2xl font-bold mb-4">UNESCO Heritage Preservation Collaboration</h2>
+          <p class="text-gray-600 mb-4">We're proud to collaborate with UNESCO to help preserve and document cultural heritage sites worldwide. Our technology helps create detailed digital records of endangered sites and intangible cultural traditions for future generations.</p>
+          <a href="#unesco-project" class="text-blue-600 hover:underline font-medium">Learn about our preservation initiatives →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="flex justify-between items-center w-full p-4 text-left font-medium">
+            <span>How does the AR cultural guide work?</span>
+            <i class="fas fa-chevron-down text-gray-400"></i>
+          </button>
+          <div class="p-4 pt-0 text-gray-600">
+            <p>Our AR guide uses your device's camera to recognize cultural landmarks and sites. It then overlays historical information, 3D reconstructions, and interactive elements directly onto your view. The app can work offline for major sites after downloading site data.</p>
+          </div>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="flex justify-between items-center w-full p-4 text-left font-medium">
+            <span>Are all the cultural sites accessible with AR features?</span>
+            <i class="fas fa-chevron-down text-gray-400"></i>
+          </button>
+          <div class="p-4 pt-0 text-gray-600">
+            <p>We currently offer AR experiences for over 1,500 major cultural sites across 75 countries, with new sites added monthly. All UNESCO World Heritage sites and most major museums and landmarks are supported.</p>
+          </div>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="flex justify-between items-center w-full p-4 text-left font-medium">
+            <span>Can I use the app without internet connection?</span>
+            <i class="fas fa-chevron-down text-gray-400"></i>
+          </button>
+          <div class="p-4 pt-0 text-gray-600">
+            <p>Yes! You can download guides for specific regions or sites before your visit to use all features offline, including AR experiences, audio guides, and interactive maps.</p>
+          </div>
+        </div>
+        
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                  <button class="faq-toggle flex justify-between items-center w-full p-4 text-left font-medium text-gray-800">
+                    <span>How does the AR cultural guide work?</span>
+                    <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content p-4 pt-0 text-gray-600 hidden">
+                    <p>Our AR guide uses your device's camera to recognize cultural landmarks and sites. It overlays historical data, 3D models, and interactions directly on your screen. You can also use it offline by downloading the site content in advance.</p>
+                  </div>
+                </div>
+          
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                  <button class="faq-toggle flex justify-between items-center w-full p-4 text-left font-medium text-gray-800">
+                    <span>Are all the cultural sites accessible with AR features?</span>
+                    <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content p-4 pt-0 text-gray-600 hidden">
+                    <p>We support AR features for 1,500+ cultural sites across 75+ countries, including most UNESCO heritage sites, museums, and popular landmarks. New content is added monthly.</p>
+                  </div>
+                </div>
+          
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                  <button class="faq-toggle flex justify-between items-center w-full p-4 text-left font-medium text-gray-800">
+                    <span>Can I use the app without an internet connection?</span>
+                    <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content p-4 pt-0 text-gray-600 hidden">
+                    <p>Yes, you can download guides and use all features offline, including AR views, audio narration, and local maps. Perfect for remote travel!</p>
+                  </div>
+                </div>
+          
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                  <button class="faq-toggle flex justify-between items-center w-full p-4 text-left font-medium text-gray-800">
+                    <span>How accurate are the historical reconstructions?</span>
+                    <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content p-4 pt-0 text-gray-600 hidden">
+                    <p>Our 3D reconstructions are developed with historians and archaeologists to ensure historical accuracy. We also include references and cross-checks for transparency.</p>
+                  </div>
+                </div>
+          
+                <!-- Additional FAQs -->
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                  <button class="faq-toggle flex justify-between items-center w-full p-4 text-left font-medium text-gray-800">
+                    <span>Is the AR experience child-friendly and educational?</span>
+                    <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content p-4 pt-0 text-gray-600 hidden">
+                    <p>Yes! Our app is designed for all age groups. It includes fun facts, gamified quizzes, and educational storytelling to keep younger users engaged while learning.</p>
+                  </div>
+                </div>
+          
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                  <button class="faq-toggle flex justify-between items-center w-full p-4 text-left font-medium text-gray-800">
+                    <span>Can I contribute content to the AR guide?</span>
+                    <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content p-4 pt-0 text-gray-600 hidden">
+                    <p>We welcome community contributions! You can apply as a verified contributor to upload photos, audio guides, or cultural facts, subject to review.</p>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </section>
+          <!-- Inject navbar here -->
+<div id="navbar-container"></div>
+
+<!-- Footer placeholder -->
+<div id="footer-container"></div>
+          <script src="dashboard.js"></script>
+          <script src="../Footer/footer.js"></script>
+          <script src="../Navbar/navbar.js"></script>
+          <script>
+
+            const toggles = document.querySelectorAll('.faq-toggle');
+          
+            toggles.forEach(toggle => {
+              toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+          
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+              });
+            });
+          </script>
+          
