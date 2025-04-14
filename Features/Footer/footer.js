@@ -23,8 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(err => console.error("Footer load error:", err));
 });
 
-
-
 // Tech Enhanced Footer Script
 document.addEventListener('DOMContentLoaded', function() {
     // Back to Top Button
