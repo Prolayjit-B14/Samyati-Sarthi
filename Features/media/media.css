@@ -1,0 +1,23 @@
+/* media.css */
+#media-gallery img,
+#media-gallery video {
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#media-gallery img:hover,
+#media-gallery video:hover {
+  transform: scale(1.03);
+}
+
+#media-modal {
+  backdrop-filter: blur(6px);
+}
+
+#media-content img,
+#media-content video {
+  max-height: 80vh;
+  max-width: 100%;
+  border-radius: 1rem;
+}
