@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // If current path includes any of the nested directory names, adjust the path
   for (let dir of nestedDirs) {
     if (currentPath.includes(dir)) {
-      path = "../Footer/footer.html";
+      path = "Features/Footer/footer.html";
       break;
     }
   }
