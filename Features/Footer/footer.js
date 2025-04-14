@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 // Inside components/footer.js
 document.addEventListener("DOMContentLoaded", function () {
   const nestedDirs = ["Site_Data", "3D_Earth_Model", "AI_Assitance","Destination","Booking","Map","Virtual_Tour","Tour_Guide","Event_Festival", "Blog","Cultural_Historical", "Forum"];
@@ -22,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch(err => console.error("Footer load error:", err));
 });
->>>>>>> a9ab6ee42397b3b5a5f04e97b7a95f6a4322b590
+
 
 // Tech Enhanced Footer Script
 document.addEventListener('DOMContentLoaded', function() {
