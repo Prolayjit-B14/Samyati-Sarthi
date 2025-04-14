@@ -6,14 +6,24 @@
   <title>Smart Travel Planner</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+    <!-- Tailwind CSS (only once) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    
+    <!-- Font Awesome (use latest single version) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../Footer/footer.css">
+  <link rel="stylesheet" href="../Navbar/navbar.css">
 </head>
-<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+< class="bg-gray-100 min-h-screen p-4 md:p-8">
   <div class="max-w-7xl mx-auto">
     <header class="mb-8 text-center">
       <h1 class="text-3xl font-bold text-indigo-800">Smart Travel Planner</h1>
       <p class="text-gray-600">Plan your perfect trip based on your preferences</p>
     </header>
-
+<!-- Navbar -->
+<div id="navbar-container"></div>
+<section>
     <!-- Main Content -->
     <div class="flex flex-col lg:flex-row gap-6">
       <!-- Left Column: Input Form -->
@@ -319,6 +329,12 @@
       </div>
     </div>
 </div>
+</section>
+<!-- Footer -->
+<div id="footer-container"></div>
+
+<script src="../Navbar/navbar.js"></script>
+<script src="../Footer/footer.js"></script>
 <script src="chat.js"></script>
 <script src="ltinerary.js"></script>
 <script src="packing.js"></script>
