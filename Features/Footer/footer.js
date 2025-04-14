@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const nestedDirs = ["Site_Data", "3D_Earth_Model", "AI_Assitance","Destination","Booking","Map","Virtual_Tour","Tour_Guide","Event_Festival", "Blog","Cultural_Historical", "Forum"];
   const currentPath = decodeURIComponent(window.location.pathname); // Convert %20 to space
-  let path = "Footer/footer.html";
+  let path = "Features/Footer/footer.html";
 
   // If current path includes any of the nested directory names, adjust the path
   for (let dir of nestedDirs) {

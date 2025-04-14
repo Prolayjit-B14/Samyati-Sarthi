@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let navbarPath = "Navbar/navbar.html";
+  let navbarPath = "Features/Navbar/navbar.html";
   const folderKeywords = ["Site_Data", "3D_Earth_Model", "AI_Assitance","Destination","Booking","Map","Virtual_Tour","Tour_Guide","Event_Festival", "Blog","Cultural_Historical", "Forum"];
   const currentPath = decodeURIComponent(window.location.pathname);
 
   for (let keyword of folderKeywords) {
     if (currentPath.includes(keyword)) {
-      navbarPath = "../Navbar/navbar.html";
+      navbarPath = "Features/Navbar/navbar.html";
       break;
     }
   }
