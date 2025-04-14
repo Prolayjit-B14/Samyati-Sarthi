@@ -1,4 +1,14 @@
- /* Ensure that the mobile menu is aligned properly */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: white;
+}
+
+/* Ensure that the mobile menu is aligned properly */
 #mobile-menu {
     position: fixed;
     top: 64px; /* Adjust this based on the height of the navbar */
