@@ -1,11 +1,11 @@
 <!-- navbar.html -->
+ <link rel="stylesheet" href="navbar.css"/>
 
 <!-- Scroll Progress Bar -->
 <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-purple-500 z-50" style="width: 0%; transition: width 0.2s;"></div>
 
 <!-- Navbar -->
-<nav class="bg-black backdrop-blur-sm w-full shadow-lg fixed top-0 left-0 z-50" role="navigation" aria-label="Main Navigation">
-  <nav class="bg-black bg-opacity-90 backdrop-blur-lg w-full fixed top-0 left-0 z-50 shadow-md">
+<nav class="bg-black bg-opacity-90 backdrop-blur-lg w-full fixed top-0 left-0 z-50 shadow-md" role="navigation" aria-label="Main Navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       
@@ -17,6 +17,7 @@
           Samyati Sarthi
         </span>
       </a>
+
       <!-- Mobile Menu Toggle -->
       <div class="flex lg:hidden">
         <button id="nav-toggle" aria-label="Toggle Navigation Menu"
@@ -27,20 +28,22 @@
           </svg>
         </button>
       </div>
+
       <!-- Desktop Links -->
       <div class="hidden lg:flex lg:items-center lg:space-x-3 mx-auto">
         <a href="../Ongoing/explore.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-green-400 hover:bg-gray-800 transform hover:scale-105 duration-200">🌍 <span class="group-hover:tracking-wide">Destinations</span></a>
-        <a href="../Cultural_Historical/cultural-his.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-yellow-300 hover:bg-gray-800 transform hover:scale-105 duration-200 ">🎭 <span class="group-hover:tracking-wide">Culture</span></a>
+        <a href="../Cultural_Historical/cultural-his.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-yellow-300 hover:bg-gray-800 transform hover:scale-105 duration-200">🎭 <span class="group-hover:tracking-wide">Culture</span></a>
         <a href="../Event_Festival/calender.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-indigo-400 hover:bg-gray-800 transform hover:scale-105 duration-200">🎉 <span class="group-hover:tracking-wide">Festivals</span></a>
-        <a href="../blog.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-gray-500 hover:bg-gray-800 transform hover:scale-105 duration-200">📸 <span class="group-hover:tracking-wide">Stories</span></a>
-        <a href="../Booking/book.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-blue-700 hover:bg-gray-800 transition transform hover:scale-105 duration-200">🧳 <span class="group-hover:tracking-wider">Booking</span></a>
-        <a href="../Forum/forum.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-purple-700 hover:bg-gray-800 transition transform hover:scale-105 duration-200">💬 <span class="group-hover:tracking-wider">Forum</span></a>
-        <a href="../AI_Assitance/ai.html" class="group px-2.5 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-pink-400 hover:bg-gray-800 transform hover:scale-105 duration-200 ">🤖 <span class="group-hover:tracking-wide">AI Assistant</span></a>
-        <a href="#contact" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-red-600 hover:bg-gray-800 transition transform hover:scale-105 duration-200">📞 <span class="group-hover:tracking-wider">Contact</span></a>
+        <a href="../Blog/blog.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-gray-500 hover:bg-gray-800 transform hover:scale-105 duration-200">📸 <span class="group-hover:tracking-wide">Stories</span></a>
+        <a href="../Booking/book.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-blue-700 hover:bg-gray-800 transform hover:scale-105 duration-200">🧳 <span class="group-hover:tracking-wider">Booking</span></a>
+        <a href="../Forum/forum.html" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-purple-700 hover:bg-gray-800 transform hover:scale-105 duration-200">💬 <span class="group-hover:tracking-wider">Forum</span></a>
+        <a href="../AI_Assitance/ai.html" class="group px-2.5 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-pink-400 hover:bg-gray-800 transform hover:scale-105 duration-200">🤖 <span class="group-hover:tracking-wide">AI Assistant</span></a>
+        <a href="#contact" class="group px-2 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 text-gray-300 hover:text-red-600 hover:bg-gray-800 transform hover:scale-105 duration-200">📞 <span class="group-hover:tracking-wider">Contact</span></a>
       </div>
+
       <!-- Mobile Menu (Initially hidden) -->
-      <div id="mobile-menu" class="hidden lg:hidden fixed top-16 right-0 bg-black bg-opacity-90 px-4 py-6 space-y-6 w-40 rounded-xl shadow-2xl z-30 transition-all duration-300 ease-in-out" style="width: 160px;" >
-        <a href="../Ongoing/explore.html" class="block text-base font-medium text-gray-200 hover:text-green-400 transition">🌍 Destinations</a>
+      <div id="mobile-menu" class="hidden lg:hidden fixed top-16 right-0 bg-black bg-opacity-90 px-4 py-6 space-y-6 w-40 rounded-xl shadow-2xl z-30 transition-all duration-300 ease-in-out">
+        <a href="../Destination/explore.html" class="block text-base font-medium text-gray-200 hover:text-green-400 transition">🌍 Destinations</a>
         <a href="../Cultural_Historical/cultural-his.html" class="block text-base font-medium text-gray-200 hover:text-yellow-300 transition">🎭 Culture</a>
         <a href="../Event_Festival/calender.html" class="block text-base font-medium text-gray-200 hover:text-pink-400 transition">🎉 Festivals</a>
         <a href="../Blog/blog.html" class="block text-base font-medium text-gray-200 hover:text-orange-300 transition">📸 Stories</a>
@@ -52,4 +55,4 @@
     </div>
   </div>
 </nav>
-
+<script src="navbar.js"></script>

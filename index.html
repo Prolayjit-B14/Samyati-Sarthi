@@ -21,7 +21,7 @@
 <body class="bg-gray-900 text-gray-800">
 
 <!-- Inject navbar here -->
-<div id="navbar-container" href="Features/Navbar/navbar.html"></div>
+<div id="navbar-container" ></div>
 
 
 
@@ -364,5 +364,16 @@
       document.getElementById('air-quality').textContent = "Air Quality: Good (AQI: 32)";
     });
   </script>
+  <script>
+    fetch("Features/Navbar/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-container").innerHTML = data;
+      })
+      .catch(error => {
+        console.error("Error loading the navbar:", error);
+      });
+  </script>
+  
 </body>
 </html>
