@@ -1,26 +1,27 @@
-
-// Inside components/footer.js
 document.addEventListener("DOMContentLoaded", function () {
-  const nestedDirs = ["Site_Data", "3D_Earth_Model", "AI_Assitance","Destination","Booking","Map","Virtual_Tour","Tour_Guide","Event_Festival", "Blog","Cultural_Historical", "Forum"];
-  const currentPath = decodeURIComponent(window.location.pathname); // Convert %20 to space
-  let path = "Features/Footer/footer.html";
+  const currentPath = decodeURIComponent(window.location.pathname);
+  let footerPath = "Features/Footer/footer.html";
 
-  // If current path includes any of the nested directory names, adjust the path
-  for (let dir of nestedDirs) {
-    if (currentPath.includes(dir)) {
-      path = "..Features/Footer/footer.html";
+  const nestedDirs = [
+    "Site_Data", "3D_Earth_Model", "AI_Assitance", "Destination",
+    "Booking", "Map", "Virtual_Tour", "Tour_Guide", "Event_Festival",
+    "Blog", "Cultural_Historical", "Forum"
+  ];
+
+  for (let keyword of nestedDirs) {
+    if (currentPath.includes(keyword)) {
+      footerPath = "../Footer/footer.html";
       break;
     }
   }
 
-  fetch(path)
+  fetch(footerPath)
     .then(res => res.text())
     .then(data => {
       document.getElementById("footer-container").innerHTML = data;
     })
     .catch(err => console.error("Footer load error:", err));
 });
-
 
 // Tech Enhanced Footer Script
 document.addEventListener('DOMContentLoaded', function() {

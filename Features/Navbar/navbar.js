@@ -9,8 +9,9 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Mobile Nav Toggle
+// Mobile Nav Toggle + Navbar Load
 document.addEventListener("DOMContentLoaded", () => {
+  // Mobile Nav Toggle
   const navToggle = document.getElementById("nav-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
 
@@ -20,28 +21,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Dynamic Navbar Loader
-  let navbarPath = "Features/Navbar/navbar.html";
-  const folderKeywords = [
-    "Site_Data", "3D_Earth_Model", "AI_Assitance", "Destination", "Booking", "Map", "Virtual_Tour",
-    "Tour_Guide", "Event_Festival", "Blog", "Cultural_Historical", "Forum"
-  ];
+  // Load Navbar
   const currentPath = decodeURIComponent(window.location.pathname);
+  let navbarPath = "Features/Navbar/navbar.html";
 
-  for (let keyword of folderKeywords) {
+  const nestedDirs = [
+    "Site_Data", "3D_Earth_Model", "AI_Assitance", "Destination",
+    "Booking", "Map", "Virtual_Tour", "Tour_Guide", "Event_Festival",
+    "Blog", "Cultural_Historical", "Forum"
+  ];
+
+  for (let keyword of nestedDirs) {
     if (currentPath.includes(keyword)) {
-      navbarPath = "Features/Navbar/navbar.html";
+      navbarPath = "../Navbar/navbar.html";
       break;
     }
   }
 
   fetch(navbarPath)
-    .then(response => response.text())
+    .then(res => res.text())
     .then(data => {
-      const navbarContainer = document.getElementById("navbar-container");
-      if (navbarContainer) {
-        navbarContainer.innerHTML = data;
-      }
+      document.getElementById("navbar-container").innerHTML = data;
     })
-    .catch(error => console.error("Error loading navbar:", error));
+    .catch(err => console.error("Navbar load error:", err));
 });
