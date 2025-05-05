@@ -16,7 +16,8 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
+    <link rel="stylesheet" href="../Footer/footer.css">
+    <link rel="stylesheet" href="../Navbar/navbar.css">
     <style>
         /* Custom Styles */
         .navbar {
@@ -129,28 +130,9 @@
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Navbar -->
-    <nav class="navbar bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-blue-600">Wanderlust</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#trending" class="text-gray-700 hover:text-blue-600">Stories</a>
-                <a href="#categories" class="text-gray-700 hover:text-blue-600">Categories</a>
-                <a href="#authors" class="text-gray-700 hover:text-blue-600">Authors</a>
-                <a href="#newsletter" class="text-gray-700 hover:text-blue-600">Newsletter</a>
-            </div>
-            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-        <div id="mobile-menu" class="navbar-mobile md:hidden bg-white shadow-md absolute top-16 left-0 w-64 h-screen p-6">
-            <a href="#trending" class="block py-2 text-gray-700 hover:text-blue-600">Stories</a>
-            <a href="#categories" class="block py-2 text-gray-700 hover:text-blue-600">Categories</a>
-            <a href="#authors" class="block py-2 text-gray-700 hover:text-blue-600">Authors</a>
-            <a href="#newsletter" class="block py-2 text-gray-700 hover:text-blue-600">Newsletter</a>
-        </div>
-    </nav>
-    
+  <!-- Inject navbar here -->
+  <div id="navbar-container"></div>
+
     
     <!-- Categories Section -->
     <section id="categories" class="categories-section py-16 bg-gray-100">
@@ -701,7 +683,13 @@
         </div>
     </div>
 </section>
+
+   <!-- Footer placeholder -->
+   <div id="footer-container"></div>
+   <script src="../Footer/footer.js"></script>
+   <script src="../Navbar/navbar.js"></script>
     <script>
+
 const postsGrid = document.querySelector('.posts-grid');
 const keywordSearch = document.getElementById('keyword-search');
 const regionFilter = document.getElementById('region-filter');
