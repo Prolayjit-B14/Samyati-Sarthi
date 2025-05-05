@@ -3,70 +3,1363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive 3D India Explorer</title>
-    <link rel="stylesheet" href="earth.css">
-    <link rel="stylesheet" href="footer.css">
+    <title>Smart Tourism Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 5px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8)), url('/api/placeholder/1600/800') center/cover no-repeat;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Earth Explorer Section */
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .earth-view-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .controls-panel {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #e3e3e3;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .search-box button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-box button:hover {
+            background-color: #2980b9;
+        }
+        
+        .control-section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e3e3e3;
+            padding-bottom: 20px;
+        }
+        
+        .control-section:last-child {
+            border-bottom: none;
+        }
+        
+        .control-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        .control-option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .control-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            gap: 8px;
+            width: 100%;
+        }
+        
+        .control-option input[type="checkbox"] {
+            accent-color: var(--primary-color);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        .control-option select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: white;
+            outline: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .control-option select:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .visualization-panel {
+            position: relative;
+            overflow: hidden;
+            height: 700px;
+            background: linear-gradient(#b3d8fd, #d6eaff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .earth-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: url('/api/placeholder/1000/1000') center/cover no-repeat;
+            border-radius: 50%;
+            width: 500px;
+            height: 500px;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5), 0 0 100px rgba(52, 152, 219, 0.3);
+            animation: rotate 120s linear infinite;
+            background-size: 1000px 500px;
+        }
+        
+        @keyframes rotate {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1000px 0;
+            }
+        }
+        
+        .info-overlay {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            max-width: 300px;
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+        
+        .info-overlay h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .info-overlay p {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .visualization-controls {
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: none;
+            box-shadow: var(--box-shadow);
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark-color);
+        }
+        
+        .control-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* Tutorial Section */
+        .tutorial-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+        
+        .tutorial-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .tutorial-step {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tutorial-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .tutorial-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .tutorial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .tutorial-step:hover .tutorial-img img {
+            transform: scale(1.05);
+        }
+        
+        .tutorial-step h3 {
+            padding: 20px 20px 10px;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+        }
+        
+        .tutorial-step p {
+            padding: 0 20px 20px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Showcase Section */
+        .showcase-section {
+            padding: 60px 0;
+        }
+        
+        .showcase-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            grid-template-areas:
+                "main main side1"
+                "side2 side3 side4";
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            cursor: pointer;
+        }
+        
+        .gallery-item:first-child {
+            grid-area: main;
+        }
+        
+        .gallery-item:nth-child(2) {
+            grid-area: side1;
+        }
+        
+        .gallery-item:nth-child(3) {
+            grid-area: side2;
+        }
+        
+        .gallery-item:nth-child(4) {
+            grid-area: side3;
+        }
+        
+        .gallery-item:nth-child(5) {
+            grid-area: side4;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: white;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-caption p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Reviews Section */
+        .reviews-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .reviews-container {
+            position: relative;
+            padding: 0 50px;
+        }
+        
+        .reviews-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            padding: 20px 0;
+        }
+        
+        .reviews-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .review-card {
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--box-shadow); 
+            scroll-snap-align: start;
+            flex: 1 0 300px;
+            border: 1px solid #eee;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .review-stars {
+            color: #f1c40f;
+            display: flex;
+            gap: 2px;
+        }
+        
+        .review-text {
+            color: #666;
+            font-style: italic;
+            line-height: 1.7;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            border: none;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .prev-btn {
+            left: 0;
+        }
+        
+        .next-btn {
+            right: 0;
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .earth-view-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-panel {
+                border-right: none;
+                border-bottom: 1px solid #e3e3e3;
+                max-height: none;
+            }
+            
+            .showcase-gallery {
+                grid-template-areas:
+                    "main main"
+                    "side1 side2"
+                    "side3 side4";
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                position: relative;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .earth-3d {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .visualization-panel {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .showcase-gallery {
+                grid-template-areas:
+                    "main"
+                    "side1"
+                    "side2"
+                    "side3"
+                    "side4";
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item:first-child {
+                aspect-ratio: 16/9;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="loading" class="loading">Loading India Explorer...</div>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                
+                <h1></h1>
+            </div>
+            <nav class="nav-links" id="navLinks">
 
-
-    <div id="info">
-        <h1>India 3D Explorer</h1>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    
+    <section id="earth-explorer" class="container">
+        <h2 class="section-title">Interactive Global Explorer</h2>
         
-        <div class="controls">
-            <label for="state">Select State:</label>
-            <select id="state">
-                <option value="">-- Select State --</option>
-                <option value="goa">Goa</option>
-                <option value="kerala">Kerala</option>
-                <option value="rajasthan">Rajasthan</option>
-                <option value="delhi">Delhi</option>
-                <option value="maharashtra">Maharashtra</option>
-                <option value="tamilnadu">Tamil Nadu</option>
-                <option value="karnataka">Karnataka</option>
-            </select>
+        <div class="earth-view-container">
+            <div class="controls-panel">
+                <div class="search-box">
+                    <input type="text" id="locationSearch" placeholder="Search locations...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="control-section">
+                    <h3>View Options</h3>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="satelliteView" checked> Satellite Imagery
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="terrainElevation" checked> Terrain Elevation
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="cityLabels" checked> City Labels
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="countryBorders"> Country Borders
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="weatherConditions"> Weather Conditions
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Points of Interest</h3>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="landmarks"> Landmarks
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="naturalWonders"> Natural Wonders
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="majorCities"> Major Cities
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="historicalSites"> Historical Sites
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Time Settings</h3>
+                    <div class="control-option">
+                        <label>Time of Day</label>
+                        <select name="time-of-day" id="timeOfDay">
+                            <option value="current">Current Time</option>
+                            <option value="sunrise">Sunrise</option>
+                            <option value="noon">Noon</option>
+                            <option value="sunset">Sunset</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+                    <div class="control-option">
+                        <label>Season</label>
+                        <select name="season" id="season">
+                            <option value="current">Current Season</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="winter">Winter</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Advanced Options</h3>
+                    <div class="control-option">
+                        <label>Resolution</label>
+                        <select name="resolution" id="resolution">
+                            <option value="high">High</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="historicalImagery"> Historical Imagery
+                        </label>
+                    </div>
+                    <div class="control-option">
+                        <label>
+                            <input type="checkbox" id="climateProjections"> Future Climate Projections
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="applySettings" style="width: 100%;">
+                    <i class="fas fa-check"></i> Apply Settings
+                </button>
+            </div>
             
-            <label for="landmark">Select Landmark:</label>
-            <select id="landmark" disabled>
-                <option value="">-- Select Landmark --</option>
-            </select>
-            
-            <label for="search">Search Location:</label>
-            <input type="text" id="search" placeholder="Type location name...">
-            
-            <button id="search-btn">Explore</button>
-            <button id="reset-btn">Reset View</button>
-            
-            <div class="image-preview" id="preview"></div>
+            <div class="visualization-panel">
+                <div class="earth-3d" id="earth3D"></div>
+                <div class="info-overlay" id="infoOverlay">
+                    <h4>Mount Everest</h4>
+                    <p><strong>Elevation:</strong> 8,848 m (29,029 ft)</p>
+                    <p><strong>Location:</strong> Nepal/Tibet (China)</p>
+                    <p><strong>First Ascent:</strong> May 29, 1953</p>
+                </div>
+                <div class="visualization-controls">
+                    <button class="control-btn" id="zoomIn"><i class="fas fa-plus"></i></button>
+                    <button class="control-btn" id="zoomOut"><i class="fas fa-minus"></i></button>
+                    <button class="control-btn" id="rotateLeft"><i class="fas fa-undo"></i></button>
+                    <button class="control-btn" id="rotateRight"><i class="fas fa-redo"></i></button>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
     
-    <div id="location-info">
-        <div class="location-title" id="info-title">Location Information</div>
-        <div id="info-description"></div>
-        <p><strong>Location:</strong> <span id="info-location"></span></p>
-        <p><strong>Best Time to Visit:</strong> <span id="info-best-time"></span></p>
-        <div class="state-info">
-            <p><strong>State:</strong> <span id="info-state"></span></p>
-            <p id="info-history"></p>
+    <section class="tutorial-section">
+        <div class="container">
+            <h2 class="section-title">How to Use Earth 3D View</h2>
+            <div class="tutorial-steps">
+                <div class="tutorial-step">
+                    <div class="step-number">1</div>
+                    <div class="tutorial-img">
+                        <img src="/api/placeholder/400/300" alt="Choose Location">
+                    </div>
+                    <h3>Choose Your Location</h3>
+                    <p>Search for a specific location using the search bar or browse the globe manually by dragging and spinning the Earth view.</p>
+                </div>
+                
+                <div class="tutorial-step">
+                    <div class="step-number">2</div>
+                    <div class="tutorial-img">
+                        <img src="/api/placeholder/400/300" alt="Customize View">
+                    </div>
+                    <h3>Customize Your View</h3>
+                    <p>Select your preferred view options from the control panel. Toggle terrain elevation, satellite imagery, borders, and points of interest.</p>
+                </div>
+                
+                <div class="tutorial-step">
+                    <div class="step-number">3</div>
+                    <div class="tutorial-img">
+                        <img src="/api/placeholder/400/300" alt="Interact">
+                    </div>
+                    <h3>Interact With Features</h3>
+                    <p>Click on landmarks, cities, or natural features to display detailed information panels with facts, figures, and tourist information.</p>
+                </div>
+                
+                <div class="tutorial-step">
+                    <div class="step-number">4</div>
+                    <div class="tutorial-img">
+                        <img src="/api/placeholder/400/300" alt="Save and Share">
+                    </div>
+                    <h3>Save and Share</h3>
+                    <p>Bookmark your favorite views, create custom tours, and share spectacular locations with friends via social media or direct links.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
     
-    <div id="tooltip" class="tooltip"></div>
-
-
-<!-- Navbar inject -->
-<div id="navbar-container"></div>
-
-<!-- Footer inject -->
-<div id="footer-container"></div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="earth.js"></script>
-    <script src="../Footer/footer.js"></script>
-    <script src="../Navbar/navbar.js"></script>
+    <section class="showcase-section container">
+        <h2 class="section-title">Spectacular Views From Around The World</h2>
+        <div class="showcase-gallery">
+            <div class="gallery-item">
+                <img src="/api/placeholder/800/600" alt="Grand Canyon">
+                <div class="gallery-caption">
+                    <h3>Grand Canyon, USA</h3>
+                    <p>Experience the breathtaking depth and scale of one of Earth's most magnificent natural wonders.</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/300" alt="Santorini">
+                <div class="gallery-caption">
+                    <h3>Santorini, Greece</h3>
+                    <p>Explore the iconic white buildings and blue domes overlooking the volcanic caldera.</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/300" alt="Mount Fuji">
+                <div class="gallery-caption">
+                    <h3>Mount Fuji, Japan</h3>
+                    <p>Witness the perfect symmetry of Japan's highest and most revered mountain.</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/300" alt="Great Barrier Reef">
+                <div class="gallery-caption">
+                    <h3>Great Barrier Reef, Australia</h3>
+                    <p>Marvel at the world's largest coral reef system, visible even from space.</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/300" alt="Amazon Rainforest">
+                <div class="gallery-caption">
+                    <h3>Amazon Rainforest</h3>
+                    <p>Discover the vast green canopy of the world's largest tropical rainforest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3>Virtual Reality Tours</h3>
+                    <p>Immerse yourself in 360° virtual reality tours of popular destinations. Experience places as if you were actually there.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Trip Planning</h3>
+                    <p>Create detailed travel itineraries with our AI-powered planning assistant. Get recommendations based on your preferences.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Translation Tools</h3>
+                    <p>Automatic translation services for 50+ languages. Learn essential phrases and navigate foreign destinations with ease.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Augmented Reality Maps</h3>
+                    <p>Use your phone camera to overlay digital information on the real world. Find directions, attractions, and services instantly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Weather Forecasting</h3>
+                    <p>Accurate weather predictions for any location. Plan your activities with confidence knowing weather conditions in advance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Features</h3>
+                    <p>Connect with fellow travelers, share experiences, and get insider tips from locals and experienced tourists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Earth Controls
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                console.log(`${checkbox.parentElement.textContent.trim()} is now ${checkbox.checked ? 'enabled' : 'disabled'}`);
+                updateEarthView();
+            });
+        });
+        
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', () => {
+                console.log(`${select.previousElementSibling.textContent} changed to ${select.value}`);
+                updateEarthView();
+            });
+        });
+        
+        // Apply Settings Button
+        const applySettingsBtn = document.getElementById('applySettings');
+        applySettingsBtn.addEventListener('click', () => {
+            console.log('Applying all settings...');
+            updateEarthView(true);
+        });
+        
+        // Search Location
+        const searchBtn = document.getElementById('searchBtn');
+        const locationSearch = document.getElementById('locationSearch');
+        
+        searchBtn.addEventListener('click', () => {
+            searchLocation(locationSearch.value);
+        });
+        
+        locationSearch.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchLocation(locationSearch.value);
+            }
+        });
+        
+        // Earth Visualization Controls
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const rotateLeftBtn = document.getElementById('rotateLeft');
+        const rotateRightBtn = document.getElementById('rotateRight');
+        const earth3D = document.getElementById('earth3D');
+        
+        let earthScale = 1;
+        let earthRotation = 0;
+        
+        zoomInBtn.addEventListener('click', () => {
+            if (earthScale < 1.5) {
+                earthScale += 0.1;
+                updateEarthTransform();
+            }
+        });
+        
+        zoomOutBtn.addEventListener('click', () => {
+            if (earthScale > 0.6) {
+                earthScale -= 0.1;
+                updateEarthTransform();
+            }
+        });
+        
+        rotateLeftBtn.addEventListener('click', () => {
+            earthRotation -= 30;
+            updateEarthTransform();
+        });
+        
+        rotateRightBtn.addEventListener('click', () => {
+            earthRotation += 30;
+            updateEarthTransform();
+        });
+        
+        // Reviews Slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        const prevReviewBtn = document.getElementById('prevReviewBtn');
+        const nextReviewBtn = document.getElementById('nextReviewBtn');
+        
+        nextReviewBtn.addEventListener('click', () => {
+            reviewsSlider.scrollBy({
+                left: 320,
+                behavior: 'smooth'
+            });
+        });
+        
+        prevReviewBtn.addEventListener('click', () => {
+            reviewsSlider.scrollBy({
+                left: -320,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Helper Functions
+        function updateEarthTransform() {
+            earth3D.style.transform = `scale(${earthScale}) rotate(${earthRotation}deg)`;
+        }
+        
+        function searchLocation(location) {
+            if (!location.trim()) return;
+            
+            console.log(`Searching for: ${location}`);
+            
+            // Demo: Update info overlay based on search
+            const infoOverlay = document.getElementById('infoOverlay');
+            
+            // Simple location matcher for demo purposes
+            const locationInfo = {
+                'mount everest': {
+                    title: 'Mount Everest',
+                    elevation: '8,848 m (29,029 ft)',
+                    location: 'Nepal/Tibet (China)',
+                    extra: 'First Ascent: May 29, 1953'
+                },
+                'grand canyon': {
+                    title: 'Grand Canyon',
+                    elevation: '1,857 m (6,093 ft) max depth',
+                    location: 'Arizona, USA',
+                    extra: 'Length: 446 km (277 mi)'
+                },
+                'santorini': {
+                    title: 'Santorini',
+                    elevation: '367 m (1,204 ft)',
+                    location: 'Greece',
+                    extra: 'Population: ~15,500'
+                },
+                'mount fuji': {
+                    title: 'Mount Fuji',
+                    elevation: '3,776 m (12,389 ft)',
+                    location: 'Japan',
+                    extra: 'Last Eruption: 1707-1708'
+                },
+                'great barrier reef': {
+                    title: 'Great Barrier Reef',
+                    elevation: 'Sea level',
+                    location: 'Queensland, Australia',
+                    extra: 'Length: 2,300 km (1,400 mi)'
+                },
+                'amazon rainforest': {
+                    title: 'Amazon Rainforest',
+                    elevation: 'Various',
+                    location: 'South America',
+                    extra: 'Area: 5,500,000 km² (2,100,000 sq mi)'
+                }
+            };
+            
+            const searchLower = location.toLowerCase();
+            let found = false;
+            
+            for (const [key, info] of Object.entries(locationInfo)) {
+                if (searchLower.includes(key)) {
+                    infoOverlay.innerHTML = `
+                        <h4>${info.title}</h4>
+                        <p><strong>Elevation:</strong> ${info.elevation}</p>
+                        <p><strong>Location:</strong> ${info.location}</p>
+                        <p><strong>${info.extra.split(':')[0]}:</strong> ${info.extra.split(':')[1]}</p>
+                    `;
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found) {
+                infoOverlay.innerHTML = `
+                    <h4>Location Not Found</h4>
+                    <p>We couldn't find detailed information about "${location}".</p>
+                    <p>Try searching for popular destinations.</p>
+                `;
+            }
+            
+            // Clear search field
+            locationSearch.value = '';
+        }
+        
+        function updateEarthView(showNotification = false) {
+            // In a real application, this would update the 3D globe based on settings
+            if (showNotification) {
+                // Show a temporary notification
+                const notification = document.createElement('div');
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.backgroundColor = 'rgba(46, 204, 113, 0.9)';
+                notification.style.color = 'white';
+                notification.style.padding = '15px 20px';
+                notification.style.borderRadius = '5px';
+                notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                notification.style.zIndex = '1000';
+                notification.style.transition = 'all 0.3s ease';
+                notification.innerHTML = '<i class="fas fa-check-circle"></i> Settings applied successfully!';
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize any components here
+            console.log('Smart Tourism Platform initialized');
+        });
+    </script>
 </body>
 </html>
