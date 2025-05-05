@@ -3,476 +3,1490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderlust - Photos & Videos</title>
-    <link rel="stylesheet" href="blog.css">
-        <!-- Tailwind CSS (only once) -->
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <meta name="description" content="Wanderlust Travel Blog - Discover authentic travel stories, tips, and adventures from a global community of travelers.">
+    <meta name="keywords" content="travel, blog, adventure, culture, food, photography">
+    <meta property="og:title" content="Wanderlust Travel Blog">
+    <meta property="og:description" content="Explore inspiring travel stories and tips from passionate travelers worldwide.">
+    <meta property="og:image" content="https://source.unsplash.com/random/1200x630?travel">
+    <meta property="og:type" content="website">
+    <title>Wanderlust - Travel Blog</title>
     
-        <!-- Font Awesome (use latest single version) -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     
-        <!-- Custom Styles -->
-        <link rel="stylesheet" href="Footer/footer.css">
-        <link rel="stylesheet" href="Navbar/navbar.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../Footer/footer.css">
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+    <style>
+        /* Custom Styles */
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        .navbar-mobile {
+            transform: translateX(-100%);
+        }
+        .navbar-mobile.active {
+            transform: translateX(0);
+        }
+        .carousel-card {
+            transition: transform 0.5s ease;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content {
+            max-width: 800px;
+            margin: 5% auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .modal.active {
+            display: block;
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .loading-spinner.active {
+            display: block;
+        }
+        .view-option.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .category-card img {
+            transition: transform 0.5s ease;
+        }
+        .pagination-item:hover {
+            background-color: #f3f4f6;
+        }
+        footer a:hover {
+            color: #1d4ed8;
+        }
+
+
+
+        /* User Upload Section */
+.user-upload-section .form-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+.user-upload-section .form-error.active {
+    display: block;
+}
+.user-upload-section input[type="file"] {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+}
+.user-upload-section .user-post-card {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+.user-upload-section .user-post-card:hover {
+    transform: translateY(-5px);
+}
+.user-upload-section .user-post-card .badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #10b981;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+    
+    
+    
+    /* Keyword Search and Season Filter */
+#keyword-search {
+    transition: border-color 0.3s ease;
+}
+#keyword-search:focus {
+    border-color: #2563eb;
+}
+#season-filter {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+    </style>
 </head>
-<body>
-      <!-- Inject navbar here -->
+<body class="bg-gray-50 font-sans">
+  <!-- Inject navbar here -->
   <div id="navbar-container"></div>
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Share Your Journey</h1>
-        <p>Explore authentic travel moments captured by our global community of adventurers</p>
+
+    
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Explore By Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <a href="/category/adventure" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?adventure" alt="Adventure travel scene" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Adventure</h3>
+                        <p class="text-sm opacity-90">145 stories</p>
+                    </div>
+                </a>
+                <a href="/category/culture" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?culture" alt="Cultural festival" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Culture</h3>
+                        <p class="text-sm opacity-90">128 stories</p>
+                    </div>
+                </a>
+                <a href="/category/food" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?food" alt="Local cuisine dish" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Food & Cuisine</h3>
+                        <p class="text-sm opacity-90">93 stories</p>
+                    </div>
+                </a>
+                <a href="/category/photography" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?photography" alt="Scenic landscape photography" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Photography</h3>
+                        <p class="text-sm opacity-90">87 stories</p>
+                    </div>
+                </a>
+                <a href="/category/budget" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?budget-travel" alt="Budget travel scene" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Budget Travel</h3>
+                        <p class="text-sm opacity-90">76 stories</p>
+                    </div>
+                </a>
+                <a href="/category/solo" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?solo-travel" alt="Solo traveler in nature" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Solo Travel</h3>
+                        <p class="text-sm opacity-90">64 stories</p>
+                    </div>
+                </a>
+                <a href="/category/wildlife" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?wildlife" alt="Wildlife safari" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Wildlife</h3>
+                        <p class="text-sm opacity-90">58 stories</p>
+                    </div>
+                </a>
+                <a href="/category/city-guides" class="category-card relative rounded-xl overflow-hidden h-48 group">
+                    <img src="https://source.unsplash.com/random/400x300?city" alt="City skyline at dusk" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">City Guides</h3>
+                        <p class="text-sm opacity-90">112 stories</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Posts Carousel -->
+    <section class="featured-posts py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Featured Stories</h2>
+                <div class="carousel-controls flex space-x-2">
+                    <button id="prevFeatured" aria-label="Previous featured story" class="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button id="nextFeatured" aria-label="Next featured story" class="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="featured-carousel overflow-hidden">
+                <div class="featured-carousel-inner flex space-x-6 transition-transform duration-500">
+                    <!-- Featured Story 1 -->
+                    <div class="featured-card flex-none w-full md:w-1/2 lg:w-1/3 rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <img src="https://source.unsplash.com/random/600x400?temples" alt="Angkor Wat temple at sunrise" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Editor's Pick
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <span>May 1, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>Cultural Exploration</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Ancient Temples of Cambodia: A Journey Through Time</h3>
+                            <p class="text-gray-600 mb-4">Discover the mystical stories behind Angkor Wat and lesser-known temple complexes in the heart of Cambodia's jungle.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://source.unsplash.com/random/40x40?portrait" alt="Author Elena Vatutin" class="w-10 h-10 rounded-full mr-3">
+                                    <span class="text-sm font-medium text-gray-700">Elena Vatutin</span>
+                                </div>
+                                <button class="read-more text-blue-600 hover:text-blue-800 font-medium" data-post-id="1">Read More →</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Story 2 -->
+                    <div class="featured-card flex-none w-full md:w-1/2 lg:w-1/3 rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <img src="https://source.unsplash.com/random/600x400?hiking" alt="Pacific Crest Trail landscape" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Adventure
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <span>April 28, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>Adventure Travel</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Hiking the Pacific Crest Trail: Lessons from 2,650 Miles</h3>
+                            <p class="text-gray-600 mb-4">My six-month journey from Mexico to Canada, and what the wilderness taught me about life, perseverance, and self-discovery.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://source.unsplash.com/random/40x40?portrait" alt="Author Jack Wildman" class="w-10 h-10 rounded-full mr-3">
+                                    <span class="text-sm font-medium text-gray-700">Jack Wildman</span>
+                                </div>
+                                <button class="read-more text-blue-600 hover:text-blue-800 font-medium" data-post-id="2">Read More →</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Story 3 -->
+                    <div class="featured-card flex-none w-full md:w-1/2 lg:w-1/3 rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <img src="https://source.unsplash.com/random/600x400?street-food" alt="Bangkok street food stall" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Food & Cuisine
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <span>April 25, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>Food Exploration</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">The Street Food Revolution: Bangkok's Culinary Secrets</h3>
+                            <p class="text-gray-600 mb-4">Follow my gastronomic adventure through the vibrant streets of Bangkok, sampling dishes that tell the story of Thailand.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://source.unsplash.com/random/40x40?portrait" alt="Author Mia Chen" class="w-10 h-10 rounded-full mr-3">
+                                    <span class="text-sm font-medium text-gray-700">Mia Chen</span>
+                                </div>
+                                <button class="read-more text-blue-600 hover:text-blue-800 font-medium" data-post-id="3">Read More →</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Story 4 -->
+                    <div class="featured-card flex-none w-full md:w-1/2 lg:w-1/3 rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <img src="https://source.unsplash.com/random/600x400?northern-lights" alt="Northern Lights in Iceland" class="w-full h-64 object-cover">
+                            <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Photography
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <span>April 20, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>Travel Photography</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Capturing the Northern Lights: A Photographer's Guide</h3>
+                            <p class="text-gray-600 mb-4">Technical tips and location secrets for photographing one of nature's most elusive and breathtaking phenomena.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://source.unsplash.com/random/40x40?portrait" alt="Author Anders Nielsen" class="w-10 h-10 rounded-full mr-3">
+                                    <span class="text-sm font-medium text-gray-700">Anders Nielsen</span>
+                                </div>
+                                <button class="read-more text-blue-600 hover:text-blue-800 font-medium" data-post-id="4">Read More →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
-<!-- Filter and Search Section -->
-<div class="container">
-    <div class="filters">
-        <div class="filter-group">
-            <label for="location">Destination</label>
-            <select id="location">
-                <option value="">All Destinations</option>
-                <option value="europe">Europe</option>
-                <option value="asia">Asia</option>
-                <option value="africa">Africa</option>
-                <option value="namerica">North America</option>
-                <option value="samerica">South America</option>
-                <option value="oceania">Oceania</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label for="category">Category</label>
-            <select id="category">
-                <option value="">All Categories</option>
-                <option value="nature">Nature</option>
-                <option value="culture">Culture</option>
-                <option value="food">Food & Cuisine</option>
-                <option value="adventure">Adventure</option>
-                <option value="wildlife">Wildlife</option>
-                <option value="cityscape">Cityscapes</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label for="season">Season</label>
-            <select id="season">
-                <option value="">All Seasons</option>
-                <option value="spring">Spring</option>
-                <option value="summer">Summer</option>
-                <option value="autumn">Autumn</option>
-                <option value="winter">Winter</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label for="content-type">Content Type</label>
-            <select id="content-type">
-                <option value="">All Content</option>
-                <option value="photos">Photos</option>
-                <option value="videos">Videos</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label for="search">Search</label>
-            <input type="text" id="search" placeholder="Keywords...">
-        </div>
-        <button class="btn btn-primary">Apply Filters</button>
-    </div>
-    <!-- Gallery Section -->
-
-    <div class="gallery-controls">
-            <div class="view-options flex gap-4 mb-6">
-                <div class="view-option active cursor-pointer">Grid View</div>
-                <div class="view-option cursor-pointer">Map View</div>
-                <div class="view-option cursor-pointer">Featured</div>
+    <section id="trending" class="latest-posts py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">Latest Stories</h2>
+                <div class="filter-controls flex flex-wrap gap-4">
+                    <div class="view-options flex gap-4 p-2 bg-gray-100 rounded-lg">
+                        <button class="view-option active px-3 py-1 rounded-md text-sm font-medium" data-filter="latest">Latest</button>
+                        <button class="view-option px-3 py-1 rounded-md text-sm font-medium" data-filter="trending">Trending</button>
+                        <button class="view-option px-3 py-1 rounded-md text-sm font-medium" data-filter="most-read">Most Read</button>
+                    </div>
+                    <select class="blog-filter px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" id="region-filter">
+                        <option value="">All Regions</option>
+                        <option value="europe">Europe</option>
+                        <option value="asia">Asia</option>
+                        <option value="africa">Africa</option>
+                        <option value="namerica">North America</option>
+                        <option value="samerica">South America</option>
+                        <option value="oceania">Oceania</option>
+                    </select>
+                    <select class="blog-filter px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="culture">Culture</option>
+                        <option value="food">Food</option>
+                        <option value="photography">Photography</option>
+                        <option value="budget">Budget</option>
+                        <option value="solo">Solo</option>
+                        <option value="wildlife">Wildlife</option>
+                        <option value="city-guides">City Guides</option>
+                    </select>
+                    <input id="keyword-search" type="text" placeholder="Search by keyword..." class="px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-1/4">
+                    <select id="season-filter" class="px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-1/4">
+                        <option value="">All Seasons</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="autumn">Autumn</option>
+                        <option value="winter">Winter</option>
+                    </select>
+                </div>
             </div>
-        <div>
-            <select id="sort">
-                <option value="trending">Trending</option>
-                <option value="recent">Most Recent</option>
-                <option value="popular">Most Popular</option>
-            </select>
+            <div class="loading-spinner hidden text-center my-8">
+                <svg class="animate-spin h-6 w-6 text-blue-600 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span class="ml-2 text-gray-600">Loading...</span>
+            </div>
+            <div class="posts-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Posts will be dynamically loaded here -->
+            </div>
+            <div class="pagination flex justify-center mt-12 space-x-2">
+                <!-- Pagination will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- User Upload Section -->
+<section id="user-upload" class="user-upload-section py-16 bg-gray-100">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Share Your Travel Story</h2>
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-md">
+            <form id="upload-form" class="space-y-6">
+                <div>
+                    <label for="upload-title" class="block text-sm font-medium text-gray-700">Story Title</label>
+                    <input id="upload-title" type="text" required class="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., My Journey Through the Alps">
+                </div>
+                <div>
+                    <label for="upload-excerpt" class="block text-sm font-medium text-gray-700">Excerpt</label>
+                    <textarea id="upload-excerpt" required class="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="A brief summary of your travel experience..."></textarea>
+                </div>
+                <div>
+                    <label for="upload-image" class="block text-sm font-medium text-gray-700">Upload Image</label>
+                    <input id="upload-image" type="file" accept="image/*" required class="w-full mt-1">
+                    <p class="text-sm text-gray-500 mt-1">Accepted formats: JPG, PNG (max 5MB)</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="upload-region" class="block text-sm font-medium text-gray-700">Region</label>
+                        <select id="upload-region" required class="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select Region</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="africa">Africa</option>
+                            <option value="namerica">North America</option>
+                            <option value="samerica">South America</option>
+                            <option value="oceania">Oceania</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="upload-category" class="block text-sm font-medium text-gray-700">Category</label>
+                        <select id="upload-category" required class="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select Category</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="culture">Culture</option>
+                            <option value="food">Food</option>
+                            <option value="photography">Photography</option>
+                            <option value="budget">Budget</option>
+                            <option value="solo">Solo</option>
+                            <option value="wildlife">Wildlife</option>
+                            <option value="city-guides">City Guides</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="upload-author" class="block text-sm font-medium text-gray-700">Your Name</label>
+                    <input id="upload-author" type="text" required class="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., John Doe">
+                </div>
+                <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition duration-300">Submit Story</button>
+            </form>
+        </div>
+        <div id="user-posts" class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Community Stories</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </div>
+</section>
+    <!-- Featured Authors Section -->
+    <section id="authors" class="featured-authors py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Meet Our Contributors</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="author-card text-center">
+                    <img src="https://source.unsplash.com/random/150x150?portrait" alt="Author Elena Vatutin" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Elena Vatutin</h3>
+                    <p class="text-blue-600 font-medium mb-2">Cultural Explorer</p>
+                    <p class="text-gray-600 text-sm mb-4">Specializes in ancient temples and historical sites across Asia.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="https://twitter.com" aria-label="Follow Elena Vatutin on Twitter" class="text-gray-500 hover:text-blue-500">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" aria-label="Follow Elena Vatutin on Instagram" class="text-gray-500 hover:text-blue-800">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="author-card text-center">
+                    <img src="https://source.unsplash.com/random/150x150?portrait" alt="Author Jack Wildman" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Jack Wildman</h3>
+                    <p class="text-green-600 font-medium mb-2">Adventure Expert</p>
+                    <p class="text-gray-600 text-sm mb-4">Thru-hiker and outdoor enthusiast specializing in wilderness expeditions.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="https://twitter.com" aria-label="Follow Jack Wildman on Twitter" class="text-gray-500 hover:text-blue-500">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" aria-label="Follow Jack Wildman on Instagram" class="text-gray-500 hover:text-blue-800">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="author-card text-center">
+                    <img src="https://source.unsplash.com/random/150x150?portrait" alt="Author Mia Chen" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mia Chen</h3>
+                    <p class="text-yellow-500 font-medium mb-2">Food Explorer</p>
+                    <p class="text-gray-600 text-sm mb-4">Culinary journalist exploring street food and traditional cooking worldwide.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="https://twitter.com" aria-label="Follow Mia Chen on Twitter" class="text-gray-500 hover:text-blue-500">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" aria-label="Follow Mia Chen on Instagram" class="text-gray-500 hover:text-blue-800">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="author-card text-center">
+                    <img src="https://source.unsplash.com/random/150x150?portrait" alt="Author Anders Nielsen" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Anders Nielsen</h3>
+                    <p class="text-purple-600 font-medium mb-2">Photography Pro</p>
+                    <p class="text-gray-600 text-sm mb-4">Award-winning landscape photographer focusing on Nordic wilderness.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="https://twitter.com" aria-label="Follow Anders Nielsen on Twitter" class="text-gray-500 hover:text-blue-500">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" aria-label="Follow Anders Nielsen on Instagram" class="text-gray-500 hover:text-blue-800">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
-    <div class="gallery">
-        <!-- Gallery Item 1 -->
-        <div class="gallery-item" data-location="europe" data-category="nature" data-season="summer" data-content-type="photos">
-            <img src="/api/placeholder/400/250" alt="Sunset in Santorini" class="gallery-image">
-            <div class="gallery-content">
-                <div class="gallery-location">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
+    
+    <!-- Modal for Post Preview -->
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="modal-title" class="text-2xl font-bold text-gray-800"></h2>
+                <button id="close-modal" aria-label="Close modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <img id="modal-image" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
+            <p id="modal-excerpt" class="text-gray-600 mb-4"></p>
+            <div class="flex items-center mb-4">
+                <img id="modal-author-image" src="" alt="" class="w-10 h-10 rounded-full mr-3">
+                <span id="modal-author" class="text-sm font-medium text-gray-700"></span>
+            </div>
+            <a id="modal-link" href="#" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition duration-300">Read Full Story</a>
+        </div>
+    </div>
+    <!-- Travel Tips Section -->
+<section class="travel-tips py-16 bg-gray-100">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Essential Travel Tips</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Tip 1 -->
+            <div class="tip-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    Santorini, Greece
                 </div>
-                <h3 class="gallery-title">Sunset Over the Caldera</h3>
-                <p>The most breathtaking sunset I've ever experienced. Worth every step to find this viewpoint!</p>
-                <div class="gallery-meta">
-                    <div class="gallery-user">
-                        <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                        <span>Maria T.</span>
-                    </div>
-                    <div class="gallery-actions">
-                        <div class="action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                            <span>247</span>
-                        </div>
-                        <div class="action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            <span>42</span>
-                        </div>
-                        <div class="action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                <polyline points="16 6 12 2 8 6"></polyline>
-                                <line x1="12" y1="2" x2="12" y2="15"></line>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Packing Smart</h3>
+                <p class="text-gray-600">Learn how to pack light while still having everything you need for any type of trip.</p>
+                <a href="#" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">Read Guide →</a>
             </div>
-        </div>
-        <!-- Gallery Item 2 -->
-        <div class="gallery-item" data-location="asia" data-category="beaches" data-season="summer" data-content-type="photos">
-            <img src="/api/placeholder/400/250" alt="Beach in Bali" class="gallery-image">
-            <div class="gallery-content">
-                <div class="gallery-location">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
+            
+            <!-- Tip 2 -->
+            <div class="tip-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
-                    Bali, Indonesia
                 </div>
-                <h3 class="gallery-title">Golden Sands</h3>
-                <p>A peaceful morning on Bali's shores with clear blue waters and golden sands.</p>
-                <div class="gallery-meta">
-                    <div class="gallery-user">
-                        <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                        <span>John D.</span>
-                    </div>
-                    <div class="gallery-actions">
-                        <div class="action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                            <span>188</span>
-                        </div>
-                        <div class="action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            <span>12</span>
-                        </div>
-                        <div class="action-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                <polyline points="16 6 12 2 8 6"></polyline>
-                                <line x1="12" y1="2" x2="12" y2="15"></line>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Safety First</h3>
+                <p class="text-gray-600">Essential safety tips to protect yourself and your belongings while traveling.</p>
+                <a href="#" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">Read Guide →</a>
             </div>
-        </div>
-
-            <!-- Gallery Item 3 -->
-            <div class="gallery-item" data-location="asia" data-category="nature" data-season="winter" data-content-type="photos">
-                <img src="/api/placeholder/400/250" alt="Mount Fuji" class="gallery-image">
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Mount Fuji, Japan
-                    </div>
-                    <h3 class="gallery-title">Winter's Embrace</h3>
-                    <p>The snow-covered peaks of Mount Fuji in winter are a sight to behold.</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Yuki T.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>320</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>88</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+            
+            <!-- Tip 3 -->
+            <div class="tip-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
                 </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Budget Travel</h3>
+                <p class="text-gray-600">How to travel the world without breaking the bank - insider tips from veteran travelers.</p>
+                <a href="#" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">Read Guide →</a>
             </div>
-            <!-- Gallery Item 4 -->
-            <div class="gallery-item" data-location="south-america" data-category="adventure" data-season="autumn" data-content-type="photos">
-                <img src="/api/placeholder/400/250" alt="Machu Picchu" class="gallery-image">
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Machu Picchu, Peru
-                    </div>
-                    <h3 class="gallery-title">The Lost City</h3>
-                    <p>Hidden in the mountains of Peru, Machu Picchu stands as a testament to Incan civilization.</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Carlos M.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>412</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>56</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+            
+            <!-- Tip 4 -->
+            <div class="tip-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 8v4l3 3"></path>
+                    </svg>
                 </div>
-            </div>
-            <!-- Gallery Item 5 -->
-            <div class="gallery-item" data-location="north-america" data-category="urban" data-season="fall" data-content-type="photos">
-                <img src="/api/placeholder/400/250" alt="New York City" class="gallery-image">
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        New York City, USA
-                    </div>
-                    <h3 class="gallery-title">City Lights</h3>
-                    <p>The dazzling lights of New York City at night are a sight that never grows old.</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Alex P.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>512</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>112</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Gallery Item 6 -->
-            <div class="gallery-item" data-location="africa" data-category="wildlife" data-season="summer" data-content-type="videos">
-                <img src="/api/placeholder/400/250" alt="Serengeti Safari" class="gallery-image">
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Serengeti, Tanzania
-                    </div>
-                    <h3 class="gallery-title">Safari Adventure</h3>
-                    <p>Experience the thrill of a safari in the heart of Africa's Serengeti National Park.</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Samuel K.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>690</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>103</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Gallery Item 7 -->
-            <div class="gallery-item" data-location="europe" data-category="architecture" data-season="spring" data-content-type="photos">
-                <img src="/api/placeholder/400/250" alt="Eiffel Tower" class="gallery-image">
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Paris, France
-                    </div>
-                    <h3 class="gallery-title">The Iron Lady</h3>
-                    <p>The Eiffel Tower stands tall as one of the most recognizable landmarks in the world.</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Marie L.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>850</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>232</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Gallery Item 8 -->
-            <div class="gallery-item" data-location="oceania" data-category="nature" data-season="spring" data-content-type="photos">
-                <img src="/api/placeholder/400/250" alt="Great Barrier Reef" class="gallery-image">
-                <div class="gallery-content">
-                    <div class="gallery-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Great Barrier Reef, Australia
-                    </div>
-                    <h3 class="gallery-title">Underwater Paradise</h3>
-                    <p>The vibrant marine life of the Great Barrier Reef makes it a must-see for nature lovers.</p>
-                    <div class="gallery-meta">
-                        <div class="gallery-user">
-                            <img src="/api/placeholder/30/30" alt="User" class="user-avatar">
-                            <span>Tom H.</span>
-                        </div>
-                        <div class="gallery-actions">
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <span>725</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                                <span>47</span>
-                            </div>
-                            <div class="action-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Time Management</h3>
+                <p class="text-gray-600">Maximize your travel experience by efficiently planning your itinerary and activities.</p>
+                <a href="#" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">Read Guide →</a>
             </div>
         </div>
     </div>
-
-    <!-- Load More Button -->
-    <div style="text-align: center; margin-bottom: 60px;">
-        <button class="btn btn-outline" style="background-color: #f5f5f5; color: #2a5d84; border: 2px solid #2a5d84; padding: 12px 25px;">
-            Load More
-        </button>
-    </div>
-
-        <!-- Upload Section -->
-        <section class="upload-section bg-gray-50 py-10">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-bold text-gray-800">Share Your Travel Moments</h2>
-                <p class="text-lg text-gray-600 mt-2 mb-8">Upload your photos and videos to inspire fellow travelers</p>
-                
-                <div class="upload-area bg-white shadow-lg rounded-lg p-8 transition duration-300 ease-in-out transform hover:scale-105">
-                    <div class="upload-icon mb-6">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-gray-700">Drag & Drop Files Here</h3>
-                    <p class="text-gray-500 mt-2 mb-6">or</p>
-                    <button class="btn btn-primary px-6 py-3 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition duration-200 ease-in-out">
-                        Browse Files
-                    </button>
-                    <p class="mt-4 text-sm text-gray-500">
-                        Supported formats: JPG, PNG, MP4, MOV. Max size: 20MB
-                    </p>
+</section>
+<!-- Instagram Feed Section -->
+<section class="instagram-feed py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">Follow Our Adventures</h2>
+            <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                <span>@pro_lay04</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="https://www.instagram.com/pro_lay04/" class="instagram-post relative group rounded-lg overflow-hidden">
+                <img src="../../pictures/avatar/avatar2.jpeg" alt="Instagram Post" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
                 </div>
-            </div>
-        </section>
+            </a>
+            <a href="#" class="instagram-post relative group rounded-lg overflow-hidden">
+                <img src="/api/placeholder/400/400" alt="Instagram Post" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+            </a>
+            <a href="#" class="instagram-post relative group rounded-lg overflow-hidden">
+                <img src="/api/placeholder/400/400" alt="Instagram Post" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+            </a>
+            <a href="#" class="instagram-post relative group rounded-lg overflow-hidden">
+                <img src="/api/placeholder/400/400" alt="Instagram Post" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+            </a>
+            <a href="#" class="instagram-post relative group rounded-lg overflow-hidden">
+                <img src="/api/placeholder/400/400" alt="Instagram Post" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+            </a>
+            <a href="#" class="instagram-post relative group rounded-lg overflow-hidden">
+                <img src="/api/placeholder/400/400" alt="Instagram Post" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
    <!-- Footer placeholder -->
    <div id="footer-container"></div>
+   <script src="../Footer/footer.js"></script>
+   <script src="../Navbar/navbar.js"></script>
+    <script>
 
-<!-- JavaScript for interactive features -->
-<script src="script.js"></script>
-<script src="../Footer/footer.js"></script>
-<script src="../Navbar/navbar.js"></script>
+const postsGrid = document.querySelector('.posts-grid');
+const keywordSearch = document.getElementById('keyword-search');
+const regionFilter = document.getElementById('region-filter');
+const categoryFilter = document.getElementById('category-filter');
+const seasonFilter = document.getElementById('season-filter');
+const viewOptions = document.querySelectorAll('.view-option');
+const loadingSpinner = document.querySelector('.loading-spinner');
+const paginationContainer = document.querySelector('.pagination');
+let currentPage = 1;
+const postsPerPage = 6;
 
+// Assume posts array is defined as provided previously
+let posts = [
+    {
+        id: 1,
+        title: "Exploring the Fjords of Norway: A Coastal Odyssey",
+        excerpt: "Cruising through Norway's dramatic fjords, discovering hidden villages and breathtaking vistas.",
+        image: "https://source.unsplash.com/random/600x400?fjords",
+        date: "May 1, 2025",
+        region: "europe",
+        category: "adventure",
+        author: "Lars Hansen",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2200,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 2,
+        title: "The Art of Japanese Tea Ceremonies in Kyoto",
+        excerpt: "An immersive journey into the serene world of traditional Japanese tea culture.",
+        image: "https://source.unsplash.com/random/600x400?tea-ceremony",
+        date: "April 30, 2025",
+        region: "asia",
+        category: "culture",
+        author: "Aiko Yamada",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 1800,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 3,
+        title: "Safari Adventures in Botswana's Okavango Delta",
+        excerpt: "Tracking wildlife in one of Africa's most pristine and biodiverse wetlands.",
+        image: "https://source.unsplash.com/random/600x400?safari",
+        date: "April 29, 2025",
+        region: "africa",
+        category: "wildlife",
+        author: "Thabo Molefe",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2500,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "winter"
+    },
+    {
+        id: 4,
+        title: "Budget Travel Hacks for Exploring New York City",
+        excerpt: "How to experience the Big Apple without breaking the bank, from free attractions to cheap eats.",
+        image: "https://source.unsplash.com/random/600x400?new-york",
+        date: "April 28, 2025",
+        region: "namerica",
+        category: "budget",
+        author: "Emma Rodriguez",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2000,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 5,
+        title: "The Vibrant Markets of Cusco, Peru",
+        excerpt: "A sensory journey through the colorful stalls and local flavors of Andean markets.",
+        image: "https://source.unsplash.com/random/600x400?cusco",
+        date: "April 27, 2025",
+        region: "samerica",
+        category: "culture",
+        author: "Mateo Vargas",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2300,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 6,
+        title: "Solo Trekking in Tasmania's Overland Track",
+        excerpt: "Navigating Australia's wildest trails alone, with tips for solo adventurers.",
+        image: "https://source.unsplash.com/random/600x400?tasmania",
+        date: "April 26, 2025",
+        region: "oceania",
+        category: "solo",
+        author: "Sophie Bennett",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 1900,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 7,
+        title: "Street Food Heaven: A Guide to Penang, Malaysia",
+        excerpt: "Sampling the best hawker stalls in Penang, from char kway teow to nasi kandar.",
+        image: "https://source.unsplash.com/random/600x400?penang",
+        date: "April 25, 2025",
+        region: "asia",
+        category: "food",
+        author: "Rahul Sharma",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2700,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "winter"
+    },
+    {
+        id: 8,
+        title: "Photographing Iceland's Waterfalls: A Visual Guide",
+        excerpt: "Tips for capturing the raw power and beauty of Iceland's iconic cascades.",
+        image: "https://source.unsplash.com/random/600x400?iceland-waterfall",
+        date: "April 24, 2025",
+        region: "europe",
+        category: "photography",
+        author: "Freya Jónsdóttir",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2100,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 9,
+        title: "City Guide: Exploring Cape Town's Hidden Corners",
+        excerpt: "Beyond Table Mountain: Uncovering the vibrant neighborhoods and local haunts of Cape Town.",
+        image: "https://source.unsplash.com/random/600x400?cape-town",
+        date: "April 23, 2025",
+        region: "africa",
+        category: "city-guides",
+        author: "Zara Botha",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2400,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 10,
+        title: "Hiking the Inca Trail to Machu Picchu",
+        excerpt: "A four-day trek through Peru's Andes to one of the world's most iconic ruins.",
+        image: "https://source.unsplash.com/random/600x400?machu-picchu",
+        date: "April 22, 2025",
+        region: "samerica",
+        category: "adventure",
+        author: "Diego Flores",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2600,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 11,
+        title: "The Cultural Heart of Bali: Ubud's Art and Traditions",
+        excerpt: "Exploring Ubud's rice terraces, temples, and vibrant art scene in Indonesia.",
+        image: "https://source.unsplash.com/random/600x400?ubud",
+        date: "April 21, 2025",
+        region: "asia",
+        category: "culture",
+        author: "Putu Wijaya",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2000,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 12,
+        title: "Wildlife Encounters in Australia's Great Barrier Reef",
+        excerpt: "Snorkeling and diving among vibrant corals and marine life in Queensland.",
+        image: "https://source.unsplash.com/random/600x400?great-barrier-reef",
+        date: "April 20, 2025",
+        region: "oceania",
+        category: "wildlife",
+        author: "Liam Hughes",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2300,
+        trending: false,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 13,
+        title: "Chasing the Northern Lights in Finland",
+        excerpt: "A winter adventure in Lapland, hunting for the aurora borealis under starry skies.",
+        image: "https://source.unsplash.com/random/600x400?northern-lights",
+        date: "April 15, 2025",
+        region: "europe",
+        category: "adventure",
+        author: "Elias Korhonen",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3200,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "winter"
+    },
+    {
+        id: 14,
+        title: "The Rise of Sustainable Tourism in Bhutan",
+        excerpt: "How Bhutan's unique approach to tourism preserves its culture and environment.",
+        image: "https://source.unsplash.com/random/600x400?bhutan",
+        date: "April 14, 2025",
+        region: "asia",
+        category: "culture",
+        author: "Tashi Dorji",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2900,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 15,
+        title: "Exploring Morocco's Blue Streets of Chefchaouen",
+        excerpt: "Wandering the dreamy blue alleys of Morocco's mountain town, a photographer's paradise.",
+        image: "https://source.unsplash.com/random/600x400?chefchaouen",
+        date: "April 13, 2025",
+        region: "africa",
+        category: "photography",
+        author: "Fatima Zahra",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3400,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 16,
+        title: "Solo Travel in Costa Rica: A Journey of Self-Discovery",
+        excerpt: "From rainforests to beaches, navigating Costa Rica alone with confidence and curiosity.",
+        image: "https://source.unsplash.com/random/600x400?costa-rica",
+        date: "April 12, 2025",
+        region: "namerica",
+        category: "solo",
+        author: "Clara Moreno",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2800,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 17,
+        title: "Patagonia's Untamed Beauty: Torres del Paine",
+        excerpt: "Trekking through Chile's rugged wilderness, where granite peaks meet turquoise lakes.",
+        image: "https://source.unsplash.com/random/600x400?patagonia",
+        date: "April 11, 2025",
+        region: "samerica",
+        category: "adventure",
+        author: "Santiago López",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3100,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 18,
+        title: "Foodie Adventures in Melbourne's Laneways",
+        excerpt: "Discovering Australia's culinary capital through its hidden cafes and vibrant food scene.",
+        image: "https://source.unsplash.com/random/600x400?melbourne",
+        date: "April 10, 2025",
+        region: "oceania",
+        category: "food",
+        author: "Isla Thompson",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3000,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 19,
+        title: "Budget Camping in Yosemite National Park",
+        excerpt: "Affordable ways to explore California's iconic wilderness, from tents to trails.",
+        image: "https://source.unsplash.com/random/600x400?yosemite",
+        date: "April 9, 2025",
+        region: "namerica",
+        category: "budget",
+        author: "Noah Kim",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2700,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 20,
+        title: "The Wildlife of Madagascar: Lemurs and Beyond",
+        excerpt: "Exploring the unique biodiversity of Madagascar's rainforests and coastal regions.",
+        image: "https://source.unsplash.com/random/600x400?madagascar",
+        date: "April 8, 2025",
+        region: "africa",
+        category: "wildlife",
+        author: "Amina Rakoto",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3300,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 21,
+        title: "City Guide: Lisbon's Colorful Streets and History",
+        excerpt: "Uncovering the charm of Portugal's capital, from historic trams to modern art.",
+        image: "https://source.unsplash.com/random/600x400?lisbon",
+        date: "April 7, 2025",
+        region: "europe",
+        category: "city-guides",
+        author: "Beatriz Silva",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2900,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 22,
+        title: "The Temples of Bagan: Myanmar's Ancient Wonders",
+        excerpt: "Cycling through thousands of ancient pagodas in Myanmar's archaeological heartland.",
+        image: "https://source.unsplash.com/random/600x400?bagan",
+        date: "April 6, 2025",
+        region: "asia",
+        category: "culture",
+        author: "Hla Min",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3100,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 23,
+        title: "Photographing the Amazon Rainforest",
+        excerpt: "Capturing the vibrant biodiversity and indigenous cultures of Brazil's Amazon.",
+        image: "https://source.unsplash.com/random/600x400?amazon",
+        date: "April 5, 2025",
+        region: "samerica",
+        category: "photography",
+        author: "Luisa Ferreira",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3200,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 24,
+        title: "Solo Adventures in New Zealand's Fiordland",
+        excerpt: "Exploring the remote fjords and trails of New Zealand's South Island alone.",
+        image: "https://source.unsplash.com/random/600x400?fiordland",
+        date: "April 4, 2025",
+        region: "oceania",
+        category: "solo",
+        author: "Jacob Walsh",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 2800,
+        trending: true,
+        mostRead: false,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 25,
+        title: "The Ultimate Guide to Paris on a Budget",
+        excerpt: "Exploring the City of Light with insider tips for affordable dining and attractions.",
+        image: "https://source.unsplash.com/random/600x400?paris",
+        date: "March 31, 2025",
+        region: "europe",
+        category: "budget",
+        author: "Chloe Dubois",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4500,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 26,
+        title: "Vietnam's Ha Long Bay: A Journey Through Limestone Isles",
+        excerpt: "Cruising the emerald waters of Ha Long Bay, a UNESCO World Heritage Site.",
+        image: "https://source.unsplash.com/random/600x400?ha-long-bay",
+        date: "March 30, 2025",
+        region: "asia",
+        category: "adventure",
+        author: "Nguyen Anh",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4200,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 27,
+        title: "The Culinary Soul of Ethiopia: Injera and Beyond",
+        excerpt: "Discovering Ethiopia's rich food traditions in Addis Ababa's bustling markets.",
+        image: "https://source.unsplash.com/random/600x400?ethiopia",
+        date: "March 29, 2025",
+        region: "africa",
+        category: "food",
+        author: "Selam Tesfaye",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4000,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 28,
+        title: "City Guide: Mexico City's Vibrant Neighborhoods",
+        excerpt: "From historic Zócalo to trendy Roma, exploring Mexico City's cultural tapestry.",
+        image: "https://source.unsplash.com/random/600x400?mexico-city",
+        date: "March 28, 2025",
+        region: "namerica",
+        category: "city-guides",
+        author: "Javier Ortiz",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4300,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 29,
+        title: "Bolivia's Salar de Uyuni: The World's Largest Salt Flat",
+        excerpt: "A surreal journey across Bolivia's mirror-like salt flats during the rainy season.",
+        image: "https://source.unsplash.com/random/600x400?salar-de-uyuni",
+        date: "March 27, 2025",
+        region: "samerica",
+        category: "photography",
+        author: "Camila Rojas",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4100,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "winter"
+    },
+    {
+        id: 30,
+        title: "Exploring Papua New Guinea's Tribal Cultures",
+        excerpt: "A rare glimpse into the traditions and festivals of Papua New Guinea's indigenous communities.",
+        image: "https://source.unsplash.com/random/600x400?papua-new-guinea",
+        date: "March 26, 2025",
+        region: "oceania",
+        category: "culture",
+        author: "Talia Kere",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 3900,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "spring"
+    },
+    {
+        id: 31,
+        title: "Wildlife Photography in Kenya's Maasai Mara",
+        excerpt: "Capturing the Great Migration and big cats in one of Africa's iconic reserves.",
+        image: "https://source.unsplash.com/random/600x400?maasai-mara",
+        date: "March 25, 2025",
+        region: "africa",
+        category: "wildlife",
+        author: "Kwame Osei",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4600,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "winter"
+    },
+    {
+        id: 32,
+        title: "Solo Travel in Italy: From Rome to Amalfi",
+        excerpt: "Navigating Italy's iconic cities and coastal gems as a solo traveler.",
+        image: "https://source.unsplash.com/random/600x400?amalfi",
+        date: "March 24, 2025",
+        region: "europe",
+        category: "solo",
+        author: "Giulia Rossi",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4400,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 33,
+        title: "The Street Food of Mumbai: A Culinary Journey",
+        excerpt: "From vada pav to pav bhaji, exploring Mumbai's vibrant street food culture.",
+        image: "https://source.unsplash.com/random/600x400?mumbai",
+        date: "March 23, 2025",
+        region: "asia",
+        category: "food",
+        author: "Ananya Patel",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4200,
+        trending: false,
+        mostRead: "true",
+        isUserSubmitted: false,
+        season: "winter"
+    },
+    {
+        id: 34,
+        title: "Hiking Canada's Banff National Park",
+        excerpt: "Exploring turquoise lakes and rugged peaks in the heart of the Rockies.",
+        image: "https://source.unsplash.com/random/600x400?banff",
+        date: "March 22, 2025",
+        region: "namerica",
+        category: "adventure",
+        author: "Ethan Lee",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4300,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "summer"
+    },
+    {
+        id: 35,
+        title: "City Guide: Buenos Aires' Tango and Culture",
+        excerpt: "Dancing through Argentina's capital, from milongas to vibrant street art.",
+        image: "https://source.unsplash.com/random/600x400?buenos-aires",
+        date: "March 21, 2025",
+        region: "samerica",
+        category: "city-guides",
+        author: "Valentina Gómez",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4000,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "autumn"
+    },
+    {
+        id: 36,
+        title: "Fiji's Coral Reefs: A Diver's Paradise",
+        excerpt: "Diving into the vibrant underwater world of Fiji's pristine coral ecosystems.",
+        image: "https://source.unsplash.com/random/600x400?fiji",
+        date: "March 20, 2025",
+        region: "oceania",
+        category: "wildlife",
+        author: "Sera Vuni",
+        authorImage: "https://source.unsplash.com/random/40x40?portrait",
+        views: 4100,
+        trending: false,
+        mostRead: true,
+        isUserSubmitted: false,
+        season: "summer"
+    }
+];
+
+// Initialize user posts from localStorage
+let userPosts = JSON.parse(localStorage.getItem('userPosts')) || [];
+posts.push(...userPosts.map(post => ({
+    ...post,
+    isUserSubmitted: true,
+    views: post.views || 100,
+    trending: false,
+    mostRead: false
+})));
+
+// Render posts to the grid
+function renderPosts(filteredPosts) {
+    postsGrid.innerHTML = '';
+    const start = (currentPage - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const paginatedPosts = filteredPosts.slice(start, end);
+
+    if (paginatedPosts.length === 0) {
+        postsGrid.innerHTML = '<p class="text-center text-gray-500 col-span-full">No posts found.</p>';
+        return;
+    }
+
+    paginatedPosts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'blog-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300';
+        postElement.innerHTML = `
+            <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover">
+            ${post.isUserSubmitted ? '<div class="badge bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded absolute top-2 left-2">User-Submitted</div>' : ''}
+            <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3 flex-wrap gap-x-2">
+                    <span>${post.date}</span>
+                    <span class="mx-2">•</span>
+                    <span>${post.region.charAt(0).toUpperCase() + post.region.slice(1)}</span>
+                    <span class="mx-2">•</span>
+                    <span>${post.category.charAt(0).toUpperCase() + post.category.slice(1)}</span>
+                    <span class="mx-2">•</span>
+                    <span>${post.season.charAt(0).toUpperCase() + post.season.slice(1)}</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">${post.title}</h3>
+                <p class="text-gray-600 mb-4">${post.excerpt}</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <img src="${post.authorImage}" alt="Author ${post.author}" class="w-8 h-8 rounded-full mr-2">
+                        <span class="text-sm font-medium text-gray-700">${post.author}</span>
+                    </div>
+                    <div class="flex items-center text-gray-500 text-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <span>${post.views}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        postsGrid.appendChild(postElement);
+    });
+}
+
+// Render pagination buttons
+function renderPagination(totalPosts) {
+    paginationContainer.innerHTML = '';
+    const totalPages = Math.ceil(totalPosts / postsPerPage);
+    if (totalPages <= 1) return;
+
+    // Previous button
+    const prevButton = document.createElement('button');
+    prevButton.className = 'pagination-item px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 text-sm';
+    prevButton.dataset.page = 'prev';
+    prevButton.textContent = 'Previous';
+    paginationContainer.appendChild(prevButton);
+
+    // Page numbers
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    if (startPage > 1) {
+        const firstPage = document.createElement('button');
+        firstPage.className = 'pagination-item px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 text-sm';
+        firstPage.dataset.page = '1';
+        firstPage.textContent = '1';
+        paginationContainer.appendChild(firstPage);
+        if (startPage > 2) {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'pagination-item px-4 py-2 text-gray-500 text-sm';
+            ellipsis.textContent = '...';
+            paginationContainer.appendChild(ellipsis);
+        }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.className = `pagination-item px-4 py-2 rounded-md border text-sm ${i === currentPage ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50'}`;
+        pageButton.dataset.page = i.toString();
+        pageButton.textContent = i.toString();
+        paginationContainer.appendChild(pageButton);
+    }
+
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'pagination-item px-4 py-2 text-gray-500 text-sm';
+            ellipsis.textContent = '...';
+            paginationContainer.appendChild(ellipsis);
+        }
+        const lastPage = document.createElement('button');
+        lastPage.className = 'pagination-item px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 text-sm';
+        lastPage.dataset.page = totalPages.toString();
+        lastPage.textContent = totalPages.toString();
+        paginationContainer.appendChild(lastPage);
+    }
+
+    // Next button
+    const nextButton = document.createElement('button');
+    nextButton.className = 'pagination-item px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 text-sm';
+    nextButton.dataset.page = 'next';
+    nextButton.textContent = 'Next';
+    paginationContainer.appendChild(nextButton);
+
+    // Add event listeners
+    document.querySelectorAll('.pagination-item').forEach(button => {
+        button.addEventListener('click', () => {
+            const page = button.dataset.page;
+            if (page === 'prev' && currentPage > 1) {
+                currentPage--;
+            } else if (page === 'next' && currentPage < totalPages) {
+                currentPage++;
+            } else if (!isNaN(page)) {
+                currentPage = parseInt(page);
+            }
+            filterPosts();
+        });
+    });
+}
+
+// Filter posts based on user input
+function filterPosts() {
+    loadingSpinner.classList.remove('hidden');
+    setTimeout(() => {
+        const keyword = keywordSearch.value.toLowerCase().trim();
+        const region = regionFilter.value;
+        const category = categoryFilter.value;
+        const season = seasonFilter.value;
+        const view = document.querySelector('.view-option.active').dataset.filter;
+
+        let filteredPosts = posts;
+
+        // Apply view filter
+        if (view === 'trending') {
+            filteredPosts = filteredPosts.filter(post => post.trending);
+        } else if (view === 'most-read') {
+            filteredPosts = filteredPosts.filter(post => post.mostRead);
+        } else {
+            filteredPosts = filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        // Apply region filter
+        if (region) {
+            filteredPosts = filteredPosts.filter(post => post.region === region);
+        }
+
+        // Apply category filter
+        if (category) {
+            filteredPosts = filteredPosts.filter(post => post.category === category);
+        }
+
+        // Apply season filter
+        if (season) {
+            filteredPosts = filteredPosts.filter(post => post.season === season);
+        }
+
+        // Apply keyword search
+        if (keyword) {
+            filteredPosts = filteredPosts.filter(post =>
+                post.title.toLowerCase().includes(keyword) ||
+                post.excerpt.toLowerCase().includes(keyword)
+            );
+        }
+
+        currentPage = 1;
+        renderPosts(filteredPosts);
+        renderPagination(filteredPosts.length);
+        loadingSpinner.classList.add('hidden');
+    }, 500); // Simulate API delay
+}
+
+// Add event listeners for filters
+keywordSearch.addEventListener('input', filterPosts);
+regionFilter.addEventListener('change', filterPosts);
+categoryFilter.addEventListener('change', filterPosts);
+seasonFilter.addEventListener('change', filterPosts);
+
+viewOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        viewOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        filterPosts();
+    });
+});
+
+// Initial render
+filterPosts();
+    </script>
 </body>
 </html>
